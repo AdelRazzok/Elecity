@@ -12,6 +12,7 @@ const app = express()
 app.use(express.json())
 app.use(routes)
 
-mongoose.connect(process.env.MONGODB);
+
+mongoose.connect(process.env.MONGODB)
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
