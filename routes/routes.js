@@ -1,22 +1,21 @@
 import express from 'express'
-import { getUsers } from '../controllers/userController.js'
+import { catchErrors } from '../helpers.js'
+import { getUsers, addUser } from '../controllers/userController.js'
 
 const router = express.Router()
 
-router.route('/')
-	.get((_, res) => {
-		res.send('Home page')
-	})
+router.get('/', (_, res) => {
+	res.send('Home page')
+})
 
-router.route('/users')
-	.get(getUsers)
-	.post((req, res) => {
-		res.send('Add user')
-	})
-	.put((req, res, next, id) => {
+router.get('/users', catchErrors(getUsers))
+router.post('/users', catchErrors(addUser))
+
+router.route('/users/:id')
+	.patch((req, res) => {
 		res.send('Update user')
 	})
-	.delete((req, res, next, id) => {
+	.delete((req, res) => {
 		res.send('Delete user')
 	})
 
