@@ -1,4 +1,5 @@
 import express from 'express'
+import { getUsers } from '../controllers/userController.js'
 
 const router = express.Router()
 
@@ -8,9 +9,7 @@ router.route('/')
 	})
 
 router.route('/users')
-	.get((req, res) => {
-		res.send('Get users')
-	})
+	.get(getUsers)
 	.post((req, res) => {
 		res.send('Add user')
 	})
