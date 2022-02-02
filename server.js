@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import routes from './routes/routes.js'
-import dotenv from 'dotenv'
+
 
 // Pour lancer dotenv
 dotenv.config()
