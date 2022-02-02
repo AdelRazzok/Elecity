@@ -18,8 +18,9 @@ router.route('/users/:id')
 	.patch((req, res, next, id) => {
 		res.send('Update user')
 	})
-	.delete((req, res, next, id) => {
+	.delete((req, res) => {
 		res.send('Delete user')
 	})
 
 export default router
+
