@@ -11,6 +11,6 @@ app.use(express.json())
 
 mongoose.connect(process.env.MONGODB)
 
-app.use(routes)
+app.use('/api/V1',routes)
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))

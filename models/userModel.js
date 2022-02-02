@@ -62,7 +62,8 @@ const userSchema = new mongoose.Schema({
 		formule: mongoose.ObjectId,
 		rented_at: Date
 	}
-})
+},
+{timestamps: true})
 
 const userModel  = mongoose.model('userModel', userSchema, 'elecity_users')
 
