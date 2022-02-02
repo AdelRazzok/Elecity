@@ -1,23 +1,31 @@
 import userModel from "../models/userModel.js"
 
 export const getUsers = async (_, res) => {
-	try {
-		const users = await userModel.find({})
-		res.send(users)
-	} catch (err) {
-		console.log(err)
-	}
+	const users = await userModel.find({})
+	res.status(200).send(users)
 }
 
 // Create User
 
 export const addUser = async (req, res) => {
-	try {
-		const user = userModel(req.body)
-		await user.save()
-		res.send(user)
-	} catch (err) {
-		console.log(err)
+	const user = await userModel(req.body)
+	await user.save()
+	res.status(200).send(user)
+}
+
+export const updateUser = async (req, res) => {
+	const user = await userModel.findByIdAndUpdate(req.params.id, req.body)
+	if (!user) {
+		res.status(404).send('User unkown')
+	}
+	await user.save()
+	res.status(200).send(user)
+}
+
+export const deleteUser = async (req, res) => {
+	const user = await userModel.findByIdAndDelete(req.params.id, req.body)
+	if (!user) {
+		res.status(404).send('User unkown')
 	}
 }
 

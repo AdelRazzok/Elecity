@@ -56,11 +56,6 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 		lowercase: true
-	},
-	current_rent: {
-		car_id: mongoose.ObjectId,
-		formule: mongoose.ObjectId,
-		rented_at: Date
 	}
 },
 {timestamps: true})
