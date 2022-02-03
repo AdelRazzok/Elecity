@@ -20,7 +20,11 @@ const userSchema = new mongoose.Schema({
 			trim: true,
 			lowercase: true
 		},
-		zipcode: Number,
+		zipcode: {
+			type: Number,
+			required: true,
+			trim: true
+		},
 		city: {
 			type: String,
 			required: true,
