@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUsers, addUser,updateUser, deleteUser} from '../controllers/userController.js'
+import { getUsers, getUser, addUser,updateUser, deleteUser} from '../controllers/userController.js'
 import { getCars, addCar, updateCar, deleteCar} from '../controllers/carController.js'
 import { getOffers, addOffer, updateOffer, deleteOffer} from '../controllers/offerController.js'
 import { catchErrors} from '../helpers.js'
