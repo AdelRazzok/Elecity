@@ -8,6 +8,7 @@ const router = express.Router()
 
 // users
 router.get('/users', catchErrors(getUsers))
+router.get('/users/:id', catchErrors(getUser))
 router.post('/users', catchErrors(addUser))
 router.patch('/users/:id', catchErrors(updateUser))
 router.delete('/users/:id', catchErrors(deleteUser))
@@ -26,4 +27,3 @@ router.delete('/offers/:id', catchErrors(deleteOffer))
 
 
 export default router
-
