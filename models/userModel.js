@@ -57,8 +57,8 @@ const userSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true
 	}
-	// register_date: Date
-}, { timestamps: true })
+},
+{timestamps: true})
 
 const userModel  = mongoose.model('userModel', userSchema, 'elecity_users')
 

@@ -2,6 +2,9 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import routes from './routes/routes.js'
+
+
+// Pour lancer dotenv
 dotenv.config()
 
 const PORT = process.env.PORT
@@ -11,6 +14,9 @@ app.use(express.json())
 
 mongoose.connect(process.env.MONGODB)
 
-app.use('/api/v1', routes)
+app.use('/api/V1',routes)
+
+
+mongoose.connect(process.env.MONGODB)
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
