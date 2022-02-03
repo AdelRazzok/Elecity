@@ -1,26 +1,32 @@
 {
-  "name": "elecity",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AdelRazzok/Elecity.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AdelRazzok/Elecity/issues"
-  },
-  "homepage": "https://github.com/AdelRazzok/Elecity#readme",
-  "dependencies": {
-    "dotenv": "^15.0.0",
-    "express": "^4.17.2",
-    "mongoose": "^6.1.8"
-  }
+	"name": "elecity",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"type": "module",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AdelRazzok/Elecity.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AdelRazzok/Elecity/issues"
+	},
+	"homepage": "https://github.com/AdelRazzok/Elecity#readme",
+	"dependencies": {
+		"dotenv": "^15.0.0",
+		"express": "^4.17.2",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.1.8",
+		"passport": "^0.5.2",
+		"passport-jwt": "^4.0.0"
+	},
+	"engines": {
+		"node": "16.x"
+	}
 }
