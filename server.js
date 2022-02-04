@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import passport from 'passport'
+import { JwtStrategy, ExtractJwt } from 'passport-jwt'
 import routes from './routes/routes.js'
 
 dotenv.config()
@@ -19,6 +20,22 @@ app.use(cors({
 app.use(express.json())
 
 mongoose.connect(process.env.MONGODB)
+
+passport.use(
+	new JwtStrategy(
+		{
+			secretOrKey: process.env.JWT_SECRET,
+			jwtFromRequest: ExtractJwt.fromHeader('token')
+		},
+		async (token, done) => {
+			try {
+				return done(null, token)
+			} catch (err) {
+				done(err)
+			}
+		}
+	)
+)
 
 app.use('/api/v1', passport.authenticate('jwt', { session: false }), routes)
 
