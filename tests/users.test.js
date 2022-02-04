@@ -1,12 +1,12 @@
 import { getUsers, getUser, addUser, updateUser, deleteUser } from '../controllers/userController.js'
 
-test('Get all the users from the collection', done => {
-	function getUsers(data) {
-		try {
-			expect(data).toBe('JSON');
-			done();
-		} catch (err) {
-			done(err)
-		}
-	}
+describe('Users CRUD tests', () => {
+	// test('test', () => {
+	// 	const x = 1 + 1
+	// 	expect(x).toBe(2)
+	// })
+
+	test('getUsers', () => {
+		
+	})
 })
