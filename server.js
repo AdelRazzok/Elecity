@@ -12,8 +12,7 @@ const app = express()
 app.use(cors({
     origin: '*',
     options: 'GET,POST,PATCH,DELETE',
-    preflightContinue: true,
-    allowedHeaders: 'Content-type, token'
+    allowedHeaders: 'Origin,Content-type,token'
 }))
 
 app.use(express.json())
