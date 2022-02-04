@@ -33,5 +33,4 @@ router.post('/rents', catchErrors(addRent))
 router.patch('/rents/:id', catchErrors(updateRent))
 router.delete('/rents/:id', catchErrors(deleteRent))
 
-
 export default router

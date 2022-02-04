@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import passport from 'passport'
 import routes from './routes/routes.js'
 
 dotenv.config()
@@ -19,6 +20,6 @@ app.use(express.json())
 
 mongoose.connect(process.env.MONGODB)
 
-app.use('/api/v1', routes)
+app.use('/api/v1', passport.authenticate('jwt', { session: false }), routes)
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
