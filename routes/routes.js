@@ -5,9 +5,38 @@ import { getOffers, addOffer, updateOffer, deleteOffer} from '../controllers/off
 import { getRent, getRents, addRent, updateRent, deleteRent} from '../controllers/rentController.js'
 import { catchErrors} from '../helpers.js'
 
+import swaggerJsDoc from 'swagger-jsdoc'
+import swaggerUI from 'swagger-ui-express'
+
+
+
 const router = express.Router()
 
+const swaggerOptions = {
+
+    swaggerDefinition: {
+        info : {
+            title: 'ELECITY-API',
+            version: '1.0.0'
+        }
+    },
+    apis: ['server.js'],
+}
+
+
 // users
+const swaggerDocs = swaggerJsDoc(swaggerOptions)
+console.log(swaggerDocs)
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *    description: Get all users
+ *    responses: 
+ *      200:
+ *        description: Success
+ * 
+ */
 router.get('/users', catchErrors(getUsers))
 router.get('/users/:id', catchErrors(getUser))
 router.post('/users', catchErrors(addUser))
