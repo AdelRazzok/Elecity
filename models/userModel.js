@@ -61,8 +61,7 @@ const userSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true
 	}
-},
-{timestamps: true})
+}, {timestamps: true})
 
 const userModel  = mongoose.model('userModel', userSchema, 'elecity_users')
 

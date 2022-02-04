@@ -1,9 +1,9 @@
 import express from 'express'
-import { getUsers, getUser, addUser,updateUser, deleteUser} from '../controllers/userController.js'
-import { getCars, addCar, updateCar, deleteCar} from '../controllers/carController.js'
-import { getOffers, addOffer, updateOffer, deleteOffer} from '../controllers/offerController.js'
-import { getRent, getRents, addRent, updateRent, deleteRent} from '../controllers/rentController.js'
-import { catchErrors} from '../helpers.js'
+import { getUsers, getUser, addUser,updateUser, deleteUser } from '../controllers/userController.js'
+import { getCars, addCar, updateCar, deleteCar } from '../controllers/carController.js'
+import { getOffers, addOffer, updateOffer, deleteOffer } from '../controllers/offerController.js'
+import { getRent, getRents, addRent, updateRent, deleteRent } from '../controllers/rentController.js'
+import { catchErrors } from '../helpers.js'
 
 const router = express.Router()
 

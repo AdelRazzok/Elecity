@@ -5,9 +5,9 @@ export const getUsers = async (_, res) => {
 	res.status(200).send(users)
 }
 
-
 export const getUser = async (req, res) => {
 	const user = await userModel.findById(req.params.id)
+	if (!user) res.status(404).send('Unkown user')
 	res.status(200).send(user)
 }
 export const addUser = async (req, res) => {
