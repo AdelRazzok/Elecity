@@ -24,13 +24,6 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 // app.use('/api/V1', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-
-
-
-
-
-
-
 app.use(express.json())
 
 mongoose.connect(process.env.MONGODB)
