@@ -1,6 +1,5 @@
 import carModel from "../models/carModel.js"
 
-
 // Get Cars
 export const getCars = async (_, res) => {
 	const cars = await carModel.find({})
@@ -15,7 +14,6 @@ export const addCar = async (req, res) => {
 }
 
 // Update Car
-
 export const updateCar = async (req, res) => {
 	const car = await carModel.findByIdAndUpdate(req.params.id, req.body)
 	if (!car) {
@@ -26,13 +24,9 @@ export const updateCar = async (req, res) => {
 }
 
 // Delete car
-
 export const deleteCar = async (req, res) => {
 	const car = await carModel.findByIdAndDelete(req.params.id, req.body)
 	if (!car) {
 		res.status(404).send('car model unknow')
 	}
 }
-
-
-
