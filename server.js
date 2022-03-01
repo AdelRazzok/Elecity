@@ -40,3 +40,5 @@ passport.use(
 app.use('/api/v1', passport.authenticate('jwt', { session: false }), routes)
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
+
+export default app

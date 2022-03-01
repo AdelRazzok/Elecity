@@ -5,7 +5,6 @@ export const getRents = async (_, res) => {
 	res.status(200).send(rents)
 }
 
-
 export const getRent = async (req, res) => {
 	const rent = await rentModel.findById(req.params.id)
 	res.status(200).send(rent)

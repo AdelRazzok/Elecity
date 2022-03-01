@@ -7,13 +7,12 @@ const rentSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true
 	},
-  rent_finish: {
+  	rent_finish: {
         type: Date,
 		required: true,
 		trim: true,
 		lowercase: true
-    } ,
-
+    },
     client_id: {
         type: Number,
 		required: true,
@@ -26,10 +25,7 @@ const rentSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true
     }
-
-}
-)
-
+})
 
 const rentModel  = mongoose.model('rentModel', rentSchema, 'elecity_rents')
 

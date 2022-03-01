@@ -25,12 +25,8 @@ const offerSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true
     }
-
-}
-)
-
+})
 
 const offerModel  = mongoose.model('offerModel', offerSchema, 'elecity_offers')
 
 export default offerModel
-
