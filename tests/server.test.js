@@ -26,8 +26,7 @@ app.use('/api/v1', routes)
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
 
 
-// Unit Tests
-
+// // Unit Tests
 const testUser = {
     first_name: 'Super',
     last_name: 'Test',
@@ -50,6 +49,7 @@ describe('Testing the server status', () => {
     })
 })
 
+// Users routes
 describe('Testing users routes', () => {
     
     const createUserReturnId = async () => {
@@ -85,6 +85,49 @@ describe('Testing users routes', () => {
 
     it('should delete an user', async () => {
         const response = await request(app).delete(`/api/v1/users/${await createUserReturnId()}`)
+        expect(response.statusCode).toBe(200)
+        expect(response.type).toEqual('application/json')
+    })
+
+})
+
+
+// Cars routes
+describe('Testing cars routes', () => {
+    
+    const createUserReturnId = async () => {
+        const response = await request(app).post('/api/v1/cars')
+        .send(testUser)
+        return response.body._id
+    }
+
+    afterAll(() => userModel.deleteMany({ role: 'test'}))
+    
+    it('should return all cars', async () => {
+        const response = await request(app).get('/api/v1/cars')
+        expect(response.statusCode).toBe(200)
+        expect(response.type).toEqual('application/json')
+
+    })
+    
+    it('should create an user', async () => {
+        const response = await request(app).post('/api/v1/cars')
+        .send(testUser)
+        expect(response.statusCode).toBe(200)
+        expect(response.type).toEqual('application/json')
+    })
+
+    it('should update an user', async () => {
+        const response = await request(app).patch(`/api/v1/cars/${await createUserReturnId()}`)
+        .send({
+            first_name: 'super_test'
+        })
+        expect(response.statusCode).toBe(200)
+        expect(response.type).toEqual('application/json')
+    })
+
+    it('should delete an user', async () => {
+        const response = await request(app).delete(`/api/v1/cars/${await createUserReturnId()}`)
         expect(response.statusCode).toBe(200)
         expect(response.type).toEqual('application/json')
     })
