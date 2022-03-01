@@ -94,7 +94,7 @@ describe('Testing users routes', () => {
 		expect(response.text).toEqual('User deleted')
 	})
 
-	// afterAll(() => userModel.deleteMany({ role: 'test' }))
+	afterAll(() => userModel.deleteMany({ role: 'test' }))
 })
 /*
 ========== CARS ROUTES ==========
