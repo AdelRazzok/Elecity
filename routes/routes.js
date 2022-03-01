@@ -7,6 +7,11 @@ import { catchErrors} from '../helpers.js'
 
 const router = express.Router()
 
+//root
+router.get('/', (_, res) => {
+    res.status(200).send('SERVER OK')
+})
+
 // users
 router.get('/users', catchErrors(getUsers))
 router.get('/users/:id', catchErrors(getUser))
