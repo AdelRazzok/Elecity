@@ -96,3 +96,6 @@ describe('Testing users routes', () => {
 
 	afterAll(() => userModel.deleteMany({ role: 'test' }))
 })
+/*
+========== CARS ROUTES ==========
+*/
