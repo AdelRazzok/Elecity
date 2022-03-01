@@ -23,14 +23,20 @@ mongoose.connect(process.env.MONGODB)
 app.use('/api/v1', routes)
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
 
-// Unit Tests
+/*
+==================== UNIT TESTS ====================
+
+========== SERVER TEST ==========
+*/
 describe('Testing the server status', () => {
 	it('should return a 200 status code', async () => {
 		const response = await request(app).get('/api/v1/')
 		expect(response.statusCode).toBe(200)
 	})
 })
-
+/*
+========== USER ROUTES ==========
+*/
 describe('Testing users routes', () => {
 	const testUser = {
 		first_name: 'Super',
