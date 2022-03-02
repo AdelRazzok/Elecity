@@ -17,9 +17,6 @@ dotenv.config()
 const swaggerDocument = YAML.load('./swagger.yaml')
 
 
-const PORT = process.env.PORT || 5000
-const app = express()
-
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use(express.json())
