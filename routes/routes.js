@@ -1,37 +1,14 @@
 import express from 'express'
-<<<<<<< HEAD
-import { getUsers, addUser,updateUser, deleteUser, getUser} from '../controllers/userController.js'
-import { getCars, getCar, addCar, updateCar, deleteCar} from '../controllers/carController.js'
-import { getOffers,getOffer, addOffer, updateOffer, deleteOffer} from '../controllers/offerController.js'
-import { getRent, getRents, addRent, updateRent, deleteRent} from '../controllers/rentController.js'
-import { catchErrors} from '../helpers.js'
-=======
 import { getUsers, getUser, addUser,updateUser, deleteUser } from '../controllers/userController.js'
 import { getCars, addCar, updateCar, deleteCar } from '../controllers/carController.js'
 import { getOffers, addOffer, updateOffer, deleteOffer } from '../controllers/offerController.js'
 import { getRent, getRents, addRent, updateRent, deleteRent } from '../controllers/rentController.js'
 import { catchErrors } from '../helpers.js'
->>>>>>> main
-
-
-
 
 
 const router = express.Router()
 
-<<<<<<< HEAD
-
-// home
-
-router.get('/', (req,res) => {
-
-    res.send('HOME PAGE ELECITY')
-
-})
-
-=======
 router.get('/', (_, res) => res.status(200).send('Server OK'))
->>>>>>> main
 
 // users
 
