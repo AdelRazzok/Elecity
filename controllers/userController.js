@@ -10,6 +10,7 @@ export const getUser = async (req, res) => {
 	if (!user) res.status(404).send('Unkown user')
 	res.status(200).send(user)
 }
+
 export const addUser = async (req, res) => {
 	const user = await userModel(req.body)
 	await user.save()

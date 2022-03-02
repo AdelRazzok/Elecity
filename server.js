@@ -1,4 +1,6 @@
 import express from 'express'
+import swaggerUI from 'swagger-ui-express'
+import YAML from 'yamljs'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -8,8 +10,11 @@ import routes from './routes/routes.js'
 
 dotenv.config()
 
+const swaggerDocument = YAML.load('./swagger.yaml')
 const PORT = process.env.PORT || 5000
 const app = express()
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use(cors({
     origin: '*',

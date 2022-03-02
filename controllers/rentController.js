@@ -7,6 +7,7 @@ export const getRents = async (_, res) => {
 
 export const getRent = async (req, res) => {
 	const rent = await rentModel.findById(req.params.id)
+	if (!rent) res.status(404).send('Unkown rent')
 	res.status(200).send(rent)
 }
 export const addRent = async (req, res) => {

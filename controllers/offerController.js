@@ -6,6 +6,13 @@ export const getOffers = async (_, res) => {
 	res.status(200).send(offers)
 }
 
+// Get offer 
+export const getOffer = async (req, res) => {
+	const offer = await offerModel.find({ _id: req.params.id })
+	res.send(offer)
+}
+
+
 // Create Offer
 export const addOffer = async (req, res) => {
 	const offer = await offerModel(req.body)
@@ -26,7 +33,6 @@ export const updateOffer = async (req, res) => {
 // Delete Offer
 export const deleteOffer = async (req, res) => {
 	const offer = await offerModel.findByIdAndDelete(req.params.id, req.body)
-	if (!offer) {
-		res.status(404).send('offer unknow')
-	}
+	if (!offer) res.status(404).send('offer unknow')
+	res.status(200).send(offer)
 }

@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import request from 'supertest'
 import routes from '../routes/routes.js'
-import userModel from '../models/userModel'
+import userModel from '../models/userModel.js'
 
 dotenv.config()
 
@@ -39,10 +39,10 @@ describe('Testing the server status', () => {
 */
 describe('Testing users routes', () => {
 	const testUser = {
-		first_name: 'Super',
+		first_name: 'Ouaisouais',
 		last_name: 'Test',
 		address: {
-			road: 'Jest',
+			street: 'Jest',
 			zipcode: 76,
 			city: 'Jest City'
 		},

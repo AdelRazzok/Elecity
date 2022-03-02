@@ -6,6 +6,12 @@ export const getCars = async (_, res) => {
 	res.status(200).send(cars)
 }
 
+// Get car with his id
+export const getCar = async (req, res) => {
+	const car = await carModel.find({ _id: req.params.id })
+	res.status(200).send(car)
+}
+
 // Create Car
 export const addCar = async (req, res) => {
 	const car = await carModel(req.body)
@@ -16,9 +22,7 @@ export const addCar = async (req, res) => {
 // Update Car
 export const updateCar = async (req, res) => {
 	const car = await carModel.findByIdAndUpdate(req.params.id, req.body)
-	if (!car) {
-		res.status(404).send('car model unkown')
-	}
+	if (!car) res.status(404).send('car model unkown')
 	await car.save()
 	res.status(200).send(car)
 }
@@ -26,7 +30,6 @@ export const updateCar = async (req, res) => {
 // Delete car
 export const deleteCar = async (req, res) => {
 	const car = await carModel.findByIdAndDelete(req.params.id, req.body)
-	if (!car) {
-		res.status(404).send('car model unknow')
-	}
+	if (!car) res.status(404).send('car model unknow')
+	res.status(200).send(car)
 }
