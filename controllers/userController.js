@@ -6,14 +6,9 @@ export const getUsers = async (_, res) => {
 }
 
 export const getUser = async (req, res) => {
-<<<<<<< HEAD
-	const user = await userModel.find({ _id: req.params.id })
-	res.send(user)
-=======
 	const user = await userModel.findById(req.params.id)
 	if (!user) res.status(404).send('Unkown user')
 	res.status(200).send(user)
->>>>>>> main
 }
 
 export const addUser = async (req, res) => {

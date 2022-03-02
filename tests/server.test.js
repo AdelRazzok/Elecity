@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import request from 'supertest'
 import routes from '../routes/routes.js'
-
 import userModel from '../models/userModel'
 
 dotenv.config()
