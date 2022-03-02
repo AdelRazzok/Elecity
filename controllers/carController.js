@@ -22,9 +22,7 @@ export const addCar = async (req, res) => {
 // Update Car
 export const updateCar = async (req, res) => {
 	const car = await carModel.findByIdAndUpdate(req.params.id, req.body)
-	if (!car) {
-		res.status(404).send('car model unkown')
-	}
+	if (!car) res.status(404).send('car model unkown')
 	await car.save()
 	res.status(200).send(car)
 }
