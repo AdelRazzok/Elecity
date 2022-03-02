@@ -13,6 +13,10 @@ schemes:
 - "https"
 - "http"
 paths:
+
+  security:
+    - JWT: []
+
   /api/v1/users:
     post:
       tags:
@@ -371,6 +375,12 @@ paths:
           description: "Invalid offer supplied"
         "404":
           description: "Offer not found"
+
+securityDefinitions:
+  JWT:
+    type: apiKey
+    name: token
+    in: header
 
 definitions:
     CreateUser:
