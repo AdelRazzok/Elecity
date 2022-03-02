@@ -376,7 +376,6 @@ paths:
     
 
 
-
 definitions:
     CreateUser:
       type: object

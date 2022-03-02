@@ -1,9 +1,17 @@
 import express from 'express'
+<<<<<<< HEAD
 import { getUsers, addUser,updateUser, deleteUser, getUser} from '../controllers/userController.js'
 import { getCars, getCar, addCar, updateCar, deleteCar} from '../controllers/carController.js'
 import { getOffers,getOffer, addOffer, updateOffer, deleteOffer} from '../controllers/offerController.js'
 import { getRent, getRents, addRent, updateRent, deleteRent} from '../controllers/rentController.js'
 import { catchErrors} from '../helpers.js'
+=======
+import { getUsers, getUser, addUser,updateUser, deleteUser } from '../controllers/userController.js'
+import { getCars, addCar, updateCar, deleteCar } from '../controllers/carController.js'
+import { getOffers, addOffer, updateOffer, deleteOffer } from '../controllers/offerController.js'
+import { getRent, getRents, addRent, updateRent, deleteRent } from '../controllers/rentController.js'
+import { catchErrors } from '../helpers.js'
+>>>>>>> main
 
 
 
@@ -11,6 +19,7 @@ import { catchErrors} from '../helpers.js'
 
 const router = express.Router()
 
+<<<<<<< HEAD
 
 // home
 
@@ -20,6 +29,9 @@ router.get('/', (req,res) => {
 
 })
 
+=======
+router.get('/', (_, res) => res.status(200).send('Server OK'))
+>>>>>>> main
 
 // users
 
@@ -52,6 +64,5 @@ router.get('/rents', catchErrors(getRents))
 router.post('/rents', catchErrors(addRent))
 router.patch('/rents/:id', catchErrors(updateRent))
 router.delete('/rents/:id', catchErrors(deleteRent))
-
 
 export default router

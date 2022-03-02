@@ -1,7 +1,5 @@
 import offerModel from "../models/offerModel.js"
 
-
-
 // Get Offers
 export const getOffers = async (_, res) => {
 	const offers = await offerModel.find({})
@@ -38,7 +36,11 @@ export const deleteOffer = async (req, res) => {
 	if (!offer) {
 		res.status(404).send('offer unknow')
 	}
+<<<<<<< HEAD
 	res.status(200).send(offer)
 }
 
 
+=======
+}
+>>>>>>> main
