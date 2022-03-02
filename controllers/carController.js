@@ -35,12 +35,8 @@ export const deleteCar = async (req, res) => {
 	if (!car) {
 		res.status(404).send('car model unknow')
 	}
-<<<<<<< HEAD
 	res.status(200).send(car)
 }
 
 
 
-=======
-}
->>>>>>> main
