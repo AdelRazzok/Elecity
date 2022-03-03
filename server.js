@@ -5,8 +5,14 @@ import cors from 'cors'
 import passport from 'passport'
 import { Strategy, ExtractJwt } from 'passport-jwt'
 import routes from './routes/routes.js'
-// import swaggerUi from 'swagger-ui-express'
-// import swaggerFile from './swagger-output.json'
+import swaggerUi from 'swagger-ui-express'
+
+import { readFile } from 'fs/promises'
+const swaggerFile = JSON.parse(
+	await readFile(
+	  new URL('./swagger-output.json', import.meta.url)
+	)
+)
 
 dotenv.config()
 
@@ -42,7 +48,7 @@ passport.use(
 
 app.use('/api/v1', passport.authenticate('jwt', { session: false }), routes)
 
-// app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
 
