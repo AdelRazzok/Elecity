@@ -8,10 +8,8 @@ const offerSchema = new mongoose.Schema({
 		lowercase: true
 	},
     offer_price: {
-        type: String,
-		required: true,
-		trim: true,
-		lowercase: true
+        type: Number,
+		required: true
     },
     offer_description: {
         type: String,
@@ -22,8 +20,6 @@ const offerSchema = new mongoose.Schema({
     offer_duration: {
         type: Number,
 		required: true,
-		trim: true,
-		lowercase: true
     }
 })
 
