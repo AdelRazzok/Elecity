@@ -1,0 +1,355 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Elecity API",
+    "description": "Open documentation for Elecity API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    },
+    {
+      "url": "https://localhost:5000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "API root",
+      "description": "Server state"
+    },
+    {
+      "name": "Users",
+      "description": "Users routes"
+    },
+    {
+      "name": "Cars",
+      "description": "Cars routes"
+    },
+    {
+      "name": "Offers",
+      "description": "Offers routes"
+    },
+    {
+      "name": "Rents",
+      "description": "Rents routes"
+    }
+  ],
+  "paths": {
+    "/api/v1/": {
+      "get": {
+        "tags": [
+          "API root"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {},
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/cars": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/cars/{id}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/offers": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/offers/{id}": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents/{id}": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": {
+    "bearerAuth": []
+  }
+}
