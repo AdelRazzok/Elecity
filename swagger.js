@@ -87,4 +87,4 @@ const doc = {
 const outputFile = './swagger-output.json'
 const endpointFiles = ['./server.js']
 
-swaggerAutogen({openapi: '3.0.0'})(outputFile, endpointFiles, doc).then(async () => await import('./server.js'))
+swaggerAutogen({openapi: '3.0.0'})(outputFile, endpointFiles, doc)

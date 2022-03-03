@@ -6,7 +6,13 @@ import passport from 'passport'
 import { Strategy, ExtractJwt } from 'passport-jwt'
 import routes from './routes/routes.js'
 import swaggerUi from 'swagger-ui-express'
-import swaggerFile from './swagger-output.json'
+
+import { readFile } from 'fs/promises'
+const swaggerFile = JSON.parse(
+	await readFile(
+	  new URL('./swagger-output.json', import.meta.url)
+	)
+)
 
 dotenv.config()
 
