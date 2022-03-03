@@ -39,17 +39,17 @@ describe('Testing the server status', () => {
 */
 describe('Testing users routes', () => {
 	const testUser = {
-		first_name: 'Ouaisouais',
+		first_name: 'Super',
 		last_name: 'Test',
 		address: {
-			street: 'Jest',
-			zipcode: 76,
+			street: 'Jest Road',
+			zipcode: 12345,
 			city: 'Jest City'
 		},
-		birth_date: '07/06/1995',
-		phone: '0123',
-		mail: 'jest@mail.com',
-		password: 'motdepasseenclair',
+		birth_date: '01/01/1970',
+		phone: '0123456789',
+		mail: 'supertest@mail.com',
+		password: 'password',
 		role: 'Test'
 	}
 	// Create an user and return his ID to test the routes
