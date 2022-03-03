@@ -16,7 +16,8 @@ const app = express()
 app.use(cors({
     origin: '*',
     options: 'GET,POST,PATCH,DELETE',
-    allowedHeaders: 'Content-type'
+    allowedHeaders: 'Content-type,Authorization',
+	credentials: true
 }))
 
 app.use(express.json())
