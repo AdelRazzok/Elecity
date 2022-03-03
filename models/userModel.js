@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
 		zipcode: {
 			type: Number,
 			required: true,
-			trim: true
 		},
 		city: {
 			type: String,

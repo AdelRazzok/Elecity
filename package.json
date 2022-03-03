@@ -5,8 +5,7 @@
     "main": "server.js",
     "type": "module",
     "scripts": {
-        "start": "node server.js",
-        "nodemon": "nodemon server.js",
+        "start": "node --experimental-json-modules swagger.js",
         "watch": "nodemon server.js",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit"
     },
@@ -31,7 +30,7 @@
         "passport": "^0.5.2",
         "passport-jwt": "^4.0.0",
         "supertest": "^6.2.2",
-        "swagger-jsdoc": "^6.1.0",
+        "swagger-autogen": "^2.19.0",
         "swagger-ui-express": "^4.3.0",
         "yamljs": "^0.3.0"
     },
