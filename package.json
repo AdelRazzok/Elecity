@@ -5,9 +5,10 @@
     "main": "server.js",
     "type": "module",
     "scripts": {
-        "start": "node --experimental-json-modules swagger.js",
+        "start": "node --experimental-json-modules server.js",
         "watch": "nodemon server.js",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit",
+		"doc": "node --experimental-json-modules swagger.js"
     },
     "repository": {
         "type": "git",

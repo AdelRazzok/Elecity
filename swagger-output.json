@@ -745,17 +745,8 @@
         "type": "object",
         "properties": {
           "rent_date": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "string",
-                "example": "2022-03-03T09:30:00Z"
-              },
-              "format": {
-                "type": "string",
-                "example": "date-time"
-              }
-            }
+            "type": "string",
+            "example": "2022-03-03T09:30:00Z"
           },
           "rent_finish": {
             "type": "string",
