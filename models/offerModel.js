@@ -88,7 +88,7 @@ const offerSchema = new mongoose.Schema({
 		}
 	}
 
-})
+}, {versionKey: false, timestamps: true})
 
 const offerModel = mongoose.model('offerModel', offerSchema, 'elecity_offers')
 

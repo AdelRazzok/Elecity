@@ -17,7 +17,7 @@ const rentSchema = new mongoose.Schema({
         type: Number,
 		required: true,
     }
-})
+}, {versionKey: false, timestamps: true})
 
 const rentModel  = mongoose.model('rentModel', rentSchema, 'elecity_rents')
 
