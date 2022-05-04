@@ -5,20 +5,20 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
+		// lowercase: true
 	},
 	last_name: {
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
+		// lowercase: true
 	},
 	address: {
 		street: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
+			// lowercase: true
 		},
 		zipcode: {
 			type: Number,
@@ -28,20 +28,20 @@ const userSchema = new mongoose.Schema({
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
+			// lowercase: true
 		}
 	},
 	birth_date: {
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
+		// lowercase: true
 	},
 	phone: {
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
+		// lowercase: true
 	},
 	mail: {
 		type: String,

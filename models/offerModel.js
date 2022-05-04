@@ -5,13 +5,11 @@ const offerSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
 	},
 	offer_model: {
 		type: String,
 		required: true,
 		trim: true,
-		lowercase: true
 	},
 	offer_price: {
 		hour: {
@@ -27,7 +25,6 @@ const offerSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
-		// lowercase: true
 	},
 	offer_image: {
 		main: {
@@ -60,31 +57,26 @@ const offerSchema = new mongoose.Schema({
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		gearbox: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		seats: {
 			type: Number,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		doors: {
 			type: Number,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		autonomy: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		}
 	}
 
