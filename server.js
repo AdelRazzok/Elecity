@@ -6,6 +6,9 @@ import passport from 'passport'
 import { Strategy, ExtractJwt } from 'passport-jwt'
 import routes from './routes/routes.js'
 import swaggerUi from 'swagger-ui-express'
+import bodyParser from 'body-parser'
+import MethodOverride from 'method-override'
+
 
 import { readFile } from 'fs/promises'
 const swaggerFile = JSON.parse(
@@ -20,13 +23,16 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 app.use(cors({
-    origin: '*',
-    options: 'GET,POST,PATCH,DELETE',
-    allowedHeaders: 'Content-type,Authorization',
+	origin: '*',
+	options: 'GET,POST,PATCH,DELETE',
+	allowedHeaders: 'Content-type,Authorization',
 	credentials: true
 }))
 
 app.use(express.json())
+
+app.use(bodyParser.json())
+app.use(MethodOverride('_method'))
 
 mongoose.connect(process.env.MONGODB)
 
