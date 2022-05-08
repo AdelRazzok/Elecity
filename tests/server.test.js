@@ -8,7 +8,7 @@ import userModel from '../models/userModel.js'
 
 dotenv.config()
 
-const apiKey = process.env.API_KEY
+const API_KEY = process.env.API_KEY
 const PORT = process.env.PORT || 5001
 const app = express()
 
@@ -55,13 +55,13 @@ describe('Testing users routes', () => {
 	const getUserId = async () => {
 		const response = await request(app).post('/api/v1/users')
 		.send(testUser)
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		return response.body._id
 	}
 
 	it('should return all users', async () => {
 		const response = await request(app).get('/api/v1/users')
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
 		expect(response.type).toEqual('application/json')
 	})
@@ -69,14 +69,14 @@ describe('Testing users routes', () => {
 	it('should create an user', async () => {
 		const response = await request(app).post('/api/v1/users')
 		.send(testUser)
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
 		expect(response.type).toEqual('application/json')
 	})
 
 	it('should return an user', async () => {
 		const response = await request(app).get(`/api/v1/users/${await getUserId()}`)
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
 		expect(response.type).toEqual('application/json')
 	})
@@ -87,14 +87,14 @@ describe('Testing users routes', () => {
 			first_name: 'SuperTest',
 			last_name: 'Jest'
 		})
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
 		expect(response.type).toEqual('application/json')
 	})
 
 	it('should delete an user', async () => {
 		const response = await request(app).delete(`/api/v1/users/${await getUserId()}`)
-		.set({ token: apiKey })
+		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
 		expect(response.text).toEqual('User deleted')
 	})
