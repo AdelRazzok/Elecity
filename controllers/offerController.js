@@ -1,38 +1,51 @@
 import offerModel from "../models/offerModel.js"
 
-// Get Offers
-export const getOffers = async (_, res) => {
-	const offers = await offerModel.find({})
-	res.status(200).send(offers)
-}
-
-// Get offer 
-export const getOffer = async (req, res) => {
-	const offer = await offerModel.find({ _id: req.params.id })
-	res.send(offer)
-}
-
-
-// Create Offer
-export const addOffer = async (req, res) => {
-	const offer = await offerModel(req.body)
-	await offer.save()
-	res.status(200).send(offer)
-}
-
-// Update Offer
-export const updateOffer = async (req, res) => {
-	const offer = await offerModel.findByIdAndUpdate(req.params.id, req.body)
-	if (!offer) {
-		res.status(404).send('offer unkown')
+export const getOffers = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const offers = await offerModel.find({})
+		res.status(200).send(offers)
+	} else {
+		res.status(401).send('Unauthorized')
 	}
-	await offer.save()
-	res.status(200).send(offer)
 }
 
-// Delete Offer
+export const getOffer = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const offer = await offerModel.findById(req.params.id)
+		if (!offer) res.status(404).send('Unkown offer')
+		res.send(offer)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
+export const addOffer = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const offer = await offerModel(req.body)
+		await offer.save()
+		res.status(200).send(offer)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
+export const updateOffer = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const offer = await offerModel.findByIdAndUpdate(req.params.id, req.body)
+		if (!offer) res.status(404).send('Unknown offer')
+		await offer.save()
+		res.status(200).send(offer)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
 export const deleteOffer = async (req, res) => {
-	const offer = await offerModel.findByIdAndDelete(req.params.id, req.body)
-	if (!offer) res.status(404).send('offer unknow')
-	res.status(200).send(offer)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const offer = await offerModel.findByIdAndDelete(req.params.id, req.body)
+		if (!offer) res.status(404).send('Unknown offer')
+		res.status(200).send(offer)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }

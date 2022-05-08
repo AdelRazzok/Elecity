@@ -9,25 +9,21 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        lowercase: true
     },
     car_model: {
         type: String,
         required: true,
         trim: true,
-        lowercase: true
     },
     car_category: {
         type: String,
         required: true,
         trim: true,
-        lowercase: true
     },
     car_color: {
         type: String,
         required: true,
         trim: true,
-        lowercase: true
     },
     car_state: {
         type: Number,
@@ -43,7 +39,6 @@ const carSchema = new mongoose.Schema({
             type: String,
             required: true,
             trim: true,
-            lowercase: true
         },
         car_crashed: {
             type: Boolean,
@@ -52,7 +47,6 @@ const carSchema = new mongoose.Schema({
         crash_history: {
             type: String,
             trim: true,
-            lowercase: true
         }
     }
 }, { versionKey: false, timestamps: true })

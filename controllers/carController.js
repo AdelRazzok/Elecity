@@ -1,35 +1,51 @@
 import carModel from "../models/carModel.js"
 
-// Get Cars
 export const getCars = async (_, res) => {
-	const cars = await carModel.find({})
-	res.status(200).send(cars)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const cars = await carModel.find({})
+		res.status(200).send(cars)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }
 
-// Get car with his id
 export const getCar = async (req, res) => {
-	const car = await carModel.find({ _id: req.params.id })
-	res.status(200).send(car)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const car = await carModel.findById(req.params.id)
+		if (!car) res.status(404).send('Unknow car')
+		res.status(200).send(car)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }
 
-// Create Car
 export const addCar = async (req, res) => {
-	const car = await carModel(req.body)
-	await car.save()
-	res.status(200).send(car)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const car = await carModel(req.body)
+		await car.save()
+		res.status(200).send(car)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }
 
-// Update Car
 export const updateCar = async (req, res) => {
-	const car = await carModel.findByIdAndUpdate(req.params.id, req.body)
-	if (!car) res.status(404).send('car model unkown')
-	await car.save()
-	res.status(200).send(car)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const car = await carModel.findByIdAndUpdate(req.params.id, req.body)
+		if (!car) res.status(404).send('Unknow car model')
+		await car.save()
+		res.status(200).send(car)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }
 
-// Delete car
 export const deleteCar = async (req, res) => {
-	const car = await carModel.findByIdAndDelete(req.params.id, req.body)
-	if (!car) res.status(404).send('car model unknow')
-	res.status(200).send(car)
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const car = await carModel.findByIdAndDelete(req.params.id, req.body)
+		if (!car) res.status(404).send('Unknow car model')
+		res.status(200).send(car)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
 }

@@ -22,10 +22,12 @@
     },
     "homepage": "https://github.com/AdelRazzok/Elecity#readme",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.20.0",
         "cors": "^2.8.5",
         "dotenv": "^15.0.0",
         "express": "^4.17.2",
+        "express-async-handler": "^1.2.0",
         "gridfs-stream": "^1.1.1",
         "heroku": "^7.59.3",
         "jsonwebtoken": "^8.5.1",
@@ -44,6 +46,7 @@
         "node": "16.x"
     },
     "devDependencies": {
-        "jest": "^27.4.7"
+        "jest": "^27.4.7",
+        "nodemon": "^2.0.16"
     }
 }

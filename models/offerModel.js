@@ -31,25 +31,21 @@ const offerSchema = new mongoose.Schema({
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		front: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		side: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 		back: {
 			type: String,
 			required: true,
 			trim: true,
-			lowercase: true
 		},
 	},
 	offer_specs: {
