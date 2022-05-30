@@ -9,7 +9,6 @@ import userModel from '../models/userModel.js'
 dotenv.config()
 
 const API_KEY = process.env.API_KEY
-console.log(API_KEY)
 const PORT = process.env.PORT || 5001
 const app = express()
 
@@ -71,7 +70,7 @@ describe('Testing users routes', () => {
 		const response = await request(app).post('/api/v1/users')
 		.send(testUser)
 		.set({ token: API_KEY })
-		expect(response.statusCode).toBe(200)
+		expect(response.statusCode).toBe(201)
 		expect(response.type).toEqual('application/json')
 	})
 

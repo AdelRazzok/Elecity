@@ -35,4 +35,5 @@ jobs:
       - name: Run test with MongoDB
         env:
           MONGODB: ${{ secrets.MONGODB }}
+          API_KEY: ${{ secrets.API_KEY }}
         run: npm test
