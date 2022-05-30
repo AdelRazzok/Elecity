@@ -9,6 +9,7 @@ import userModel from '../models/userModel.js'
 dotenv.config()
 
 const API_KEY = process.env.API_KEY
+console.log(API_KEY)
 const PORT = process.env.PORT || 5001
 const app = express()
 
