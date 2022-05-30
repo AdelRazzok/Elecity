@@ -1,0 +1,777 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Elecity API",
+    "description": "Open documentation for Elecity API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://elecity-api.herokuapp.com/"
+    },
+    {
+      "url": "https://elecity-api.herokuapp.com/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "API root",
+      "description": "return the API state"
+    },
+    {
+      "name": "Users",
+      "description": "Users routes"
+    },
+    {
+      "name": "Cars",
+      "description": "Cars routes"
+    },
+    {
+      "name": "Offers",
+      "description": "Offers routes"
+    },
+    {
+      "name": "Rents",
+      "description": "Rents routes"
+    }
+  ],
+  "paths": {
+    "/api/v1/": {
+      "get": {
+        "tags": [
+          "API root"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "The API is working"
+          },
+          "500": {
+            "description": "The API is down / on maintenance"
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Return all users"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create a new user"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the user with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the user with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete the user with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/cars": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Return all cars"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create a new car"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/car"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cars/{id}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the car with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the car with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete the car with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/offers": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Return all offers"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Delete the car with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/offer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/offers/{id}": {
+      "get": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Create a new offer"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the offer with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Offers"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete the offer with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/rents": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Update the offer with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create a new rent"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/rent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rents/{id}": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "user": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "street": {
+                "type": "string",
+                "example": "225 Demo Road"
+              },
+              "zipcode": {
+                "type": "number",
+                "example": 4125
+              },
+              "city": {
+                "type": "string",
+                "example": "Los Angeles"
+              }
+            }
+          },
+          "birth_date": {
+            "type": "string",
+            "example": "07/06/1995"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+33 0 00 00 00 00"
+          },
+          "mail": {
+            "type": "string",
+            "example": "johndoe@mail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "crypted_password"
+          },
+          "role": {
+            "type": "string",
+            "example": "user"
+          }
+        }
+      },
+      "car": {
+        "type": "object",
+        "properties": {
+          "car_available": {
+            "type": "boolean",
+            "example": true
+          },
+          "car_brand": {
+            "type": "string",
+            "example": "Tesla"
+          },
+          "car_model": {
+            "type": "string",
+            "example": "Y"
+          },
+          "car_category": {
+            "type": "string",
+            "example": "SUV"
+          },
+          "car_color": {
+            "type": "string",
+            "example": "red"
+          },
+          "car_state": {
+            "type": "number",
+            "example": 10
+          },
+          "car_kilometer": {
+            "type": "number",
+            "example": 93000
+          },
+          "car_history": {
+            "type": "object",
+            "properties": {
+              "car_purchase": {
+                "type": "string",
+                "example": "05/02/2022"
+              },
+              "car_crashed": {
+                "type": "boolean",
+                "example": true
+              },
+              "crash_history": {
+                "type": "string",
+                "example": "Pneu crevé"
+              }
+            }
+          }
+        }
+      },
+      "offer": {
+        "type": "object",
+        "properties": {
+          "offer_name": {
+            "type": "string",
+            "example": "Starter"
+          },
+          "offer_price": {
+            "type": "number",
+            "example": 9
+          },
+          "offer_description": {
+            "type": "string",
+            "example": "Louez une petite citadine pour des trajets cours, 9€ /h"
+          },
+          "offer_duration": {
+            "type": "number",
+            "example": 8
+          }
+        }
+      },
+      "rent": {
+        "type": "object",
+        "properties": {
+          "rent_date": {
+            "type": "string",
+            "example": "2022-03-03T09:30:00Z"
+          },
+          "rent_finish": {
+            "type": "string",
+            "example": "2022-03-03T14:00:00Z"
+          },
+          "client_id": {
+            "type": "string",
+            "example": "972cdab5413"
+          },
+          "car_id": {
+            "type": "string",
+            "example": "461abcc1203"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": {
+    "bearerAuth": []
+  }
+}

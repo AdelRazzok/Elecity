@@ -1,44 +1,21 @@
 import express from 'express'
-import { getUsers, getUser, addUser,updateUser, deleteUser } from '../controllers/userController.js'
-import { getCars, getCar, addCar, updateCar, deleteCar } from '../controllers/carController.js'
-import { getOffers, getOffer, addOffer, updateOffer, deleteOffer } from '../controllers/offerController.js'
-import { getRent, getRents, addRent, updateRent, deleteRent } from '../controllers/rentController.js'
-import { catchErrors } from '../helpers.js'
+import users from './users.js'
+import rents from './rents.js'
+import cars from './cars.js'
+import offers from './offers.js'
 
 const router = express.Router()
 
-router.get('/', (_, res) => res.status(200).send('Server OK'))
-
-// users
-
-router.get('/users', catchErrors(getUsers))
-router.get('/users/:id', catchErrors(getUser))
-router.post('/users', catchErrors(addUser))
-router.patch('/users/:id', catchErrors(updateUser))
-router.delete('/users/:id', catchErrors(deleteUser))
-
-// cars
-
-router.get('/cars', catchErrors(getCars))
-router.get('/cars/:id', catchErrors(getCar))
-router.post('/cars', catchErrors(addCar))
-router.patch('/cars/:id', catchErrors(updateCar))
-router.delete('/cars/:id', catchErrors(deleteCar))
-
-// offers 
-
-router.get('/offers', catchErrors(getOffers))
-router.get('/offers/:id', catchErrors(getOffer))
-router.post('/offers', catchErrors(addOffer))
-router.patch('/offers/:id', catchErrors(updateOffer))
-router.delete('/offers/:id', catchErrors(deleteOffer))
-
-// rents
-
-router.get('/rents/:id', catchErrors(getRent))
-router.get('/rents', catchErrors(getRents))
-router.post('/rents', catchErrors(addRent))
-router.patch('/rents/:id', catchErrors(updateRent))
-router.delete('/rents/:id', catchErrors(deleteRent))
+router.get('/', (_, res) => res.status(200).json({ message: 'Welcome to Elecity API' })
+/*
+	#swagger.tags = ['API root']
+	#swagger.responses[200] = { description: 'The API is working' }
+	#swagger.responses[500] = { description: 'The API is down / on maintenance' }
+*/
+)
+router.use('/users', users)
+router.use('/rents', rents)
+router.use('/cars', cars)
+router.use('/offers', offers)
 
 export default router
