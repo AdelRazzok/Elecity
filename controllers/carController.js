@@ -1,6 +1,6 @@
 import carModel from "../models/carModel.js"
 
-export const getCars = async (_, res) => {
+export const getCars = async (req, res) => {
 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
 		const cars = await carModel.find({})
 		res.status(200).send(cars)

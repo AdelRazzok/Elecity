@@ -12,7 +12,7 @@ const options = {
 passport.use(
 	new Strategy(options, (jwt_payload, done) => {
 		User.findById(jwt_payload.id, (err, user) => {
-			if (err) return done(err, false)
+			if (err) return done(err, null)
 
 			if (user) {
 				return done(null, user)
