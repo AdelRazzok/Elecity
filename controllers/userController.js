@@ -60,17 +60,6 @@ export const loginUser = (async (req, res) => {
 
 	if (user && (await bcrypt.compare(password, user.password))) {
 		res.status(200).json({
-			_id: user._id,
-			first_name: user.first_name,
-			last_name: user.last_name,
-			address: {
-				street: user.address.street,
-				zipcode: user.address.zipcode,
-				city: user.address.city,
-			},
-			birth_date: user.birth_date,
-			phone: user.phone,
-			mail: user.mail,
 			token: generateToken(user._id)
 		})
 	} else {
