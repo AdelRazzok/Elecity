@@ -11,6 +11,11 @@ const offerSchema = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
+	offer_brand: {
+		type: String,
+		required: true,
+		trim: true,
+	},
 	offer_price: {
 		hour: {
 			type: Number,
@@ -28,24 +33,52 @@ const offerSchema = new mongoose.Schema({
 	},
 	offer_image: {
 		main: {
-			type: String,
-			required: true,
-			trim: true,
+			image_kit_id: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			image_kit_url: {
+				type: String,
+				required: true,
+				trim: true,
+			}
 		},
 		front: {
-			type: String,
-			required: true,
-			trim: true,
+			image_kit_id: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			image_kit_url: {
+				type: String,
+				required: true,
+				trim: true,
+			}
 		},
 		side: {
-			type: String,
-			required: true,
-			trim: true,
+			image_kit_id: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			image_kit_url: {
+				type: String,
+				required: true,
+				trim: true,
+			}
 		},
 		back: {
-			type: String,
-			required: true,
-			trim: true,
+			image_kit_id: {
+				type: String,
+				required: true,
+				trim: true,
+			},
+			image_kit_url: {
+				type: String,
+				required: true,
+				trim: true,
+			}
 		},
 	},
 	offer_specs: {

@@ -1,6 +1,7 @@
 import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import { imageKitSDK } from '../helpers.js'
 
 const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
@@ -132,6 +133,92 @@ export const deleteUser = async (req, res) => {
 		const user = await User.findByIdAndDelete(req.params.id, req.body)
 		if (!user) res.status(404).send('Unkown user')
 		res.status(200).send('User deleted')
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
+export const updateUserDocument = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const user = await User.findById(req.params.id)
+		if (!user) res.status(404).send('Unkown user')
+		if (typeof req.file === 'undefined') res.status(400).send('No file')
+
+		const imagekit = imageKitSDK
+
+		const doc_type = req.body.document_type
+
+		// Delete old document
+		if (doc_type === 'id_card' || doc_type === 'driver_license') {
+			if (user.id_card.image_kit_id) {
+				imagekit.deleteFile(user.id_card.image_kit_id,
+					function (err, response) {
+						if (err) res.status(500).json(err)
+					})
+			} else if (user.driver_license.image_kit_id) {
+				imagekit.deleteFile(user.driver_license.image_kit_id,
+					function (err, response) {
+						if (err) res.status(500).json(err)
+					})
+			}
+		}
+
+		// Upload new document and update user
+		imagekit.upload({
+			file: req.file.buffer,
+			fileName: req.file.originalname,
+		},
+			async function (err, response) {
+				if (err) {
+					return res.status(500).json(err)
+				} else {
+					if (doc_type === 'id_card') {
+						user.id_card.image_kit_url = response.url
+						user.id_card.image_kit_id = response.fileId
+					} else if (doc_type === 'driver_license') {
+						user.driver_license.image_kit_url = response.url
+						user.driver_license.image_kit_id = response.fileId
+					} else {
+						res.status(400).send('Unkown document type')
+					}
+					await user.save()
+					res.status(200).send(user)
+				}
+			}
+		)
+
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
+export const deleteUserDocument = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const user = await User.findById(req.params.id)
+		if (!user) res.status(404).send('Unkown user')
+
+		const imagekit = imageKitSDK
+
+		const doc_type = req.body.document_type
+
+		imagekit.deleteFile(user.id_card.image_kit_id,
+			async function (err, response) {
+				if (err) {
+					return res.status(500).json(err)
+				} else {
+					if (doc_type === 'id_card') {
+						user.id_card = undefined
+					} else if (doc_type === 'driver_license') {
+						user.driver_license = undefined
+					} else {
+						res.status(400).send('Unkown document type')
+					}
+					await user.save()
+					res.status(200).send(user)
+				}
+			}
+		)
+
 	} else {
 		res.status(401).send('Unauthorized')
 	}

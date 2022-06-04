@@ -21,8 +21,6 @@ app.use(cors({
 	credentials: true
 }))
 app.use(express.json())
-app.use(bodyParser.json())
-app.use(MethodOverride('_method'))
 
 mongoose.connect(process.env.MONGODB)
 
