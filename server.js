@@ -2,8 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import swaggerUi from 'swagger-ui-express'
-import bodyParser from 'body-parser'
-import MethodOverride from 'method-override'
 import { readFile } from 'fs/promises'
 import dotenv from 'dotenv'
 dotenv.config()
