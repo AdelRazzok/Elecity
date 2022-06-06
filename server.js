@@ -2,8 +2,6 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import swaggerUi from 'swagger-ui-express'
-import bodyParser from 'body-parser'
-import MethodOverride from 'method-override'
 import { readFile } from 'fs/promises'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -17,12 +15,10 @@ const app = express()
 app.use(cors({
 	origin: '*',
 	options: 'GET,POST,PATCH,DELETE',
-	allowedHeaders: 'Content-type,Authorization',
+	allowedHeaders: 'Content-type,Authorization,token',
 	credentials: true
 }))
 app.use(express.json())
-app.use(bodyParser.json())
-app.use(MethodOverride('_method'))
 
 mongoose.connect(process.env.MONGODB)
 
