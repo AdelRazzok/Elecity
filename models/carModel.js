@@ -1,54 +1,137 @@
 import mongoose from 'mongoose'
 
 const carSchema = new mongoose.Schema({
-    car_available: {
+    available: {
         type: Boolean,
         required: true,
+        trim: true,
     },
-    car_brand: {
+    brand: {
         type: String,
         required: true,
         trim: true,
     },
-    car_model: {
+    model: {
         type: String,
         required: true,
         trim: true,
     },
-    car_category: {
+    acquisition_date: {
         type: String,
         required: true,
         trim: true,
     },
-    car_color: {
-        type: String,
+    mileage: {
+        type: int,
         required: true,
         trim: true,
     },
-    car_state: {
-        type: Number,
+    platform_id: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
+        trim: true,
     },
 
-    car_kilometer: {
-        type: Number,
+    offer_id: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
+        trim: true,
     },
-    car_history: {
-        car_purchase: {
-            type: String,
+    rents: [{
+        rent_id: {
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
         },
-        car_crashed: {
+        start_date: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        end_date: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        has_started: {
             type: Boolean,
             required: true,
+            trim: true
         },
-        crash_history: {
+        start_date_confirmed: {
             type: String,
+            trim: true
+        },
+        end_date_confirmed: {
+            type: String,
+            trim: true
+        },
+        platform_id_start: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
             trim: true,
+        },
+        platform_id_end: {
+            type: mongoose.Schema.Types.ObjectId,
+            trim: true,
+        },
+        user_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+        },
+    }],
+    incidents: [{
+        incident_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+        },
+        signal_date: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        details: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        user_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+        },
+        rent_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+        },
+        files: {
+            photo: {
+                image_kit_id: {
+                    type: String,
+                    required: true,
+                    trim: true
+                },
+                image_kit_url: {
+                    type: String,
+                    required: true,
+                    trim: true
+                }
+            },
+            report: {
+                image_kit_id: {
+                    type: String,
+                    trim: true
+                },
+                image_kit_url: {
+                    type: String,
+                    trim: true
+                }
+            }
         }
-    }
+    }],
 }, { versionKey: false, timestamps: true })
 
 const carModel = mongoose.model('carModel', carSchema, 'elecity_cars')
