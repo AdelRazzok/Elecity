@@ -7,7 +7,7 @@ import files from './files.js'
 
 const router = express.Router()
 
-router.get('/', (_, res) => res.status(200).json({ message: 'Welcome to Elecity API' })
+router.get('/', (_, res) => res.status(200).json({ message: 'Welcome to Elecity API', running: true })
 /*
 	#swagger.tags = ['API root']
 	#swagger.responses[200] = { description: 'The API is working' }
