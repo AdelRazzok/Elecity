@@ -22,7 +22,7 @@ const carSchema = new mongoose.Schema({
         trim: true,
     },
     mileage: {
-        type: int,
+        type: Number,
         required: true,
         trim: true,
     },
