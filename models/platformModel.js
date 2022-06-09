@@ -32,7 +32,7 @@ const platformSchema = new mongoose.Schema({
       trim: true,
     },
   }]
-})
+}, {versionKey: false, timestamps: true})
 
 const platformModel = mongoose.model("platform", platformSchema, 'electity_platforms')
 
