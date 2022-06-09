@@ -71,10 +71,6 @@ const carSchema = new mongoose.Schema({
             required: true,
             trim: true,
         },
-        platform_id_end: {
-            type: mongoose.Schema.Types.ObjectId,
-            trim: true,
-        },
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
