@@ -66,7 +66,7 @@ const carSchema = new mongoose.Schema({
             type: String,
             trim: true
         },
-        platform_id_start: {
+        platform_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
