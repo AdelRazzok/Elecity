@@ -28,7 +28,6 @@ const platformSchema = new mongoose.Schema({
   cars: [{
     car_id: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       trim: true,
 			ref: 'carModel',
     },
