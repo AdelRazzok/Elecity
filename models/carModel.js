@@ -30,12 +30,14 @@ const carSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         trim: true,
+        ref: 'platformModel',
     },
 
     offer_id: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         trim: true,
+        ref: 'offerModel',
     },
     rents: [{
         rent_id: {
@@ -70,63 +72,55 @@ const carSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
+            ref: 'platformModel',
         },
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
+            ref: 'userModel',
         },
-    }],
-    incidents: [{
-        incident_id: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-        },
-        signal_date: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        details: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        user_id: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-        },
-        rent_id: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-        },
-        files: {
-            photo: {
-                image_kit_id: {
-                    type: String,
-                    required: true,
-                    trim: true
-                },
-                image_kit_url: {
-                    type: String,
-                    required: true,
-                    trim: true
-                }
+        incidents: [{
+            incident_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
             },
-            report: {
-                image_kit_id: {
-                    type: String,
-                    trim: true
+            signal_date: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            details: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            files: {
+                photo: {
+                    image_kit_id: {
+                        type: String,
+                        required: true,
+                        trim: true
+                    },
+                    image_kit_url: {
+                        type: String,
+                        required: true,
+                        trim: true
+                    }
                 },
-                image_kit_url: {
-                    type: String,
-                    trim: true
+                report: {
+                    image_kit_id: {
+                        type: String,
+                        trim: true
+                    },
+                    image_kit_url: {
+                        type: String,
+                        trim: true
+                    }
                 }
             }
-        }
+        }]
     }],
 }, { versionKey: false, timestamps: true })
 

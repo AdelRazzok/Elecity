@@ -30,10 +30,11 @@ const platformSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       trim: true,
+			ref: 'carModel',
     },
   }]
 }, {versionKey: false, timestamps: true})
 
-const platformModel = mongoose.model("platform", platformSchema, 'electity_platforms')
+const platformModel = mongoose.model("platformModel", platformSchema, 'electity_platforms')
 
 export default platformModel
