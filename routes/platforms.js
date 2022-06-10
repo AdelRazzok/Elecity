@@ -1,6 +1,6 @@
 import express from "express"
-import { addPlatform, getPlatform, getPlatforms } from "../controllers/platformController"
-import { catchErrors } from "../helpers"
+import { addPlatform, getPlatform, getPlatforms } from "../controllers/platformController.js"
+import { catchErrors } from "../helpers.js"
 
 const router = express.Router()
 
