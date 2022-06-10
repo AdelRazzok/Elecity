@@ -9,3 +9,5 @@ router.get("/", catchErrors(getPlatforms))
 router.get("/:id", catchErrors(getPlatform))
 
 router.post("/", catchErrors(addPlatform))
+
+export default router
