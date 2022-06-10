@@ -1,6 +1,5 @@
 import express from 'express'
 import users from './users.js'
-import rents from './rents.js'
 import cars from './cars.js'
 import offers from './offers.js'
 import files from './files.js'
@@ -15,7 +14,6 @@ router.get('/', (_, res) => res.status(200).json({ message: 'Welcome to Elecity 
 */
 )
 router.use('/users', users)
-router.use('/rents', rents)
 router.use('/cars', cars)
 router.use('/offers', offers)
 router.use('/files', files)
