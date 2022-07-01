@@ -3,6 +3,7 @@ import users from './users.js'
 import rents from './rents.js'
 import cars from './cars.js'
 import offers from './offers.js'
+import files from './files.js'
 
 const router = express.Router()
 
@@ -17,5 +18,6 @@ router.use('/users', users)
 router.use('/rents', rents)
 router.use('/cars', cars)
 router.use('/offers', offers)
+router.use('/files', files)
 
 export default router

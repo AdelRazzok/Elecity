@@ -8,13 +8,13 @@ const router = express.Router()
 // @route   GET api/v1/files/:filename
 // @desc    Return the file with the :filename param
 // @access  Private
-router.get('/files/:filename', catchErrors(getFile))
+router.get('/:filename', catchErrors(getFile))
 
 // @route   POST api/v1/files/
 // @desc    Upload a new file
 // @access  Private
-router.post('/files', upload.single('file'), catchErrors(uploadFile))
+router.post('/', upload.single('file'), catchErrors(uploadFile))
 
-router.delete('/files/:id', catchErrors(deleteFile))
+router.delete('/:id', catchErrors(deleteFile))
 
 export default router

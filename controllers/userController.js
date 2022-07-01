@@ -2,7 +2,7 @@ import User from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 
-const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1d' })
+const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
 /* ========== User auth / profile functions ========== */
 export const registerUser = (async (req, res) => {
@@ -33,6 +33,7 @@ export const registerUser = (async (req, res) => {
 	})
 
 	if (user) {
+		await user.save()
 		res.status(201).json({
 			_id: user._id,
 			first_name: user.first_name,
@@ -44,12 +45,12 @@ export const registerUser = (async (req, res) => {
 			},
 			birth_date: user.birth_date,
 			phone: user.phone,
-			mail: user.mail,
-			token: generateToken(user._id)
+			mail: user.mail
 		})
 	} else {
-		res.status(400)
-		throw new Error('Invalid data')
+		res.status(400).json({
+			error: 'Données invalides'
+		})
 	}
 })
 
@@ -73,8 +74,9 @@ export const loginUser = (async (req, res) => {
 			token: generateToken(user._id)
 		})
 	} else {
-		res.status(400)
-		throw new Error('Wrong email / password')
+		res.status(401).json({
+			error: 'Email / Mot de passe incorrect'
+		})
 	}
 })
 
@@ -117,9 +119,9 @@ export const getUser = async (req, res) => {
 
 export const addUser = async (req, res) => {
 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
-		const user = await User(req.body)
+		const user = await User.create(req.body)
 		await user.save()
-		res.status(200).send(user)
+		res.status(201).send(user)
 	} else {
 		res.status(401).send('Unauthorized')
 	}

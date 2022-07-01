@@ -70,7 +70,7 @@ describe('Testing users routes', () => {
 		const response = await request(app).post('/api/v1/users')
 		.send(testUser)
 		.set({ token: API_KEY })
-		expect(response.statusCode).toBe(200)
+		expect(response.statusCode).toBe(201)
 		expect(response.type).toEqual('application/json')
 	})
 

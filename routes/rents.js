@@ -4,7 +4,7 @@ import { catchErrors } from '../helpers.js'
 
 const router = express.Router()
 
-router.get('/rents', catchErrors(getRents)
+router.get('/', catchErrors(getRents)
 /*
 	#swagger.tags = ['Rents']
 	#swagger.security = [{
@@ -14,7 +14,7 @@ router.get('/rents', catchErrors(getRents)
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
 */
 )
-router.get('/rents/:id', catchErrors(getRent)
+router.get('/:id', catchErrors(getRent)
 /*
 	#swagger.tags = ['Rents']
 	#swagger.security = [{
@@ -24,7 +24,7 @@ router.get('/rents/:id', catchErrors(getRent)
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
 */
 )
-router.post('/rents', catchErrors(addRent)
+router.post('/', catchErrors(addRent)
 /*
 	#swagger.tags = ['Rents']
 	#swagger.security = [{
@@ -44,7 +44,7 @@ router.post('/rents', catchErrors(addRent)
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
 */
 )
-router.patch('/rents/:id', catchErrors(updateRent)
+router.patch('/:id', catchErrors(updateRent)
 /*
 	#swagger.tags = ['Rents']
 	#swagger.security = [{
@@ -54,7 +54,7 @@ router.patch('/rents/:id', catchErrors(updateRent)
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
 */
 )
-router.delete('/rents/:id', catchErrors(deleteRent)
+router.delete('/:id', catchErrors(deleteRent)
 /*
 	#swagger.tags = ['Rents']
 	#swagger.security = [{
