@@ -42,7 +42,7 @@ export const getAvailableCars = async (req, res) => {
             }
           ]
         }
-      })
+      }).lean()
       .exec((err, platforms) => {
         if (err) res.status(500).send(err)
         res.status(200).send(platforms)
@@ -108,7 +108,7 @@ export const addRent = async (req, res) => {
               _id: Mongoose.Types.ObjectId(rent_id)
             }
           }
-        })
+        }).lean()
         res.status(200).send(rented_car)
         rentSuccess = true
         break
@@ -122,9 +122,28 @@ export const addRent = async (req, res) => {
   }
 }
 
+export const getUserRents = async (req, res) => {
+  if (req.headers.token && req.headers.token === process.env.API_KEY) {
+    const rents = await CarModel.find({
+      rents: {
+        $elemMatch: {
+          user: {
+            _id: Mongoose.Types.ObjectId(req.params.id)
+          }
+        }
+      }
+    })
+    res.status(200).send(rents)
+  } else {
+    res.status(401).send('Unauthorized')
+  }
+}
+
 // export const updateRent = async (req, res) => {
 // 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
-// 		const car = await carModel.findById(req.params.id)
+// 		const car = await CarModel.find({
+//       _id: Mongoose.Types.ObjectId(req.body.car_id)
+//     })
 // 		if (!car) res.status(404).send('Unknow car model')
 // 		const rent = car.rents.id(req.body.rent_id)
 // 		if (!rent) res.status(404).send('Unknow rent')
