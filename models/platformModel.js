@@ -1,12 +1,12 @@
 import mongoose from "mongoose"
 
 const platformSchema = new mongoose.Schema({
-  phone: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  address: {
+	phone: {
+		type: String,
+		required: true,
+		trim: true,
+	},
+	address: {
 		street: {
 			type: String,
 			required: true,
@@ -25,14 +25,13 @@ const platformSchema = new mongoose.Schema({
 
 		}
 	},
-  cars: [{
-    car_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      trim: true,
-			ref: 'carModel',
-    },
-  }]
-}, {versionKey: false, timestamps: true})
+	cars: [{
+		type: mongoose.Schema.Types.ObjectId,
+		trim: true,
+		ref: 'carModel',
+
+	}]
+}, { versionKey: false, timestamps: true })
 
 const platformModel = mongoose.model("platformModel", platformSchema, 'electity_platforms')
 

@@ -48,3 +48,27 @@ export const deletePlatform = async (req, res) => {
 		res.status(401).send('Unauthorized')
 	}
 }
+
+export const pushCar = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const platform = await platformModel.findById(req.params.id)
+		if (!platform) res.status(404).send('Unknown platform')
+		platform.cars.push(req.body.id)
+		await platform.save()
+		res.status(200).send(platform)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}
+
+export const pullCar = async (req, res) => {
+	if (req.headers.token && req.headers.token === process.env.API_KEY) {
+		const platform = await platformModel.findById(req.params.id)
+		if (!platform) res.status(404).send('Unknown platform')
+		platform.cars.pull(req.body.id)
+		await platform.save()
+		res.status(200).send(platform)
+	} else {
+		res.status(401).send('Unauthorized')
+	}
+}

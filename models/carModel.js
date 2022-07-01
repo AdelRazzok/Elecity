@@ -1,11 +1,6 @@
 import mongoose from 'mongoose'
 
 const carSchema = new mongoose.Schema({
-    available: {
-        type: Boolean,
-        required: true,
-        trim: true,
-    },
     brand: {
         type: String,
         required: true,
@@ -26,32 +21,40 @@ const carSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    platform_id: {
-        type: mongoose.Schema.Types.ObjectId,
+    available: {
+        type: Boolean,
         required: true,
         trim: true,
-        ref: 'platformModel',
     },
-
-    offer_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        trim: true,
-        ref: 'offerModel',
+    platform: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'platformModel',
+        }
+    },
+    offer: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'offerModel',
+        }
     },
     rents: [{
-        rent_id: {
+        _id: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
         },
         start_date: {
-            type: String,
+            type: Date,
             required: true,
             trim: true
         },
         end_date: {
-            type: String,
+            type: Date,
             required: true,
             trim: true
         },
@@ -68,17 +71,21 @@ const carSchema = new mongoose.Schema({
             type: String,
             trim: true
         },
-        platform_id: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-            ref: 'platformModel',
+        platform: {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'platformModel',
+            }
         },
-        user_id: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            trim: true,
-            ref: 'userModel',
+        user: {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'userModel',
+            }
         },
         incidents: [{
             incident_id: {
@@ -121,7 +128,7 @@ const carSchema = new mongoose.Schema({
                 }
             }
         }]
-    }],
+    }]
 }, { versionKey: false, timestamps: true })
 
 const carModel = mongoose.model('carModel', carSchema, 'elecity_cars')
