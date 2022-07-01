@@ -23,7 +23,7 @@ app.use(cors({
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(MethodOverride('_method'))
-
+  
 mongoose.connect(process.env.MONGODB)
 
 app.use('/api/v1', router)
@@ -32,3 +32,4 @@ app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
 
 export default app
+
