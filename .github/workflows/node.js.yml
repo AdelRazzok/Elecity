@@ -41,5 +41,4 @@ jobs:
           IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
           JWT_SECRET: ${{01e4c26afb52e713e0524771435c58681916b08cbb6cbf103e0ddd2879ad156e}}
           API_BASE_URL: ${{http://elecity-api.herokuapp.com/api/v1}}
-
         run: npm test
