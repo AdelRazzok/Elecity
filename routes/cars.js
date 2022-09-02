@@ -64,4 +64,9 @@ router.delete('/:id', catchErrors(deleteCar)
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
 */
 )
+
+// router.post('/rent/:id', catchErrors(addRent))
+
+// router.patch('/rent/:id', catchErrors(updateRent))
+
 export default router

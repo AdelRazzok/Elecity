@@ -19,8 +19,9 @@ const userSchema = new mongoose.Schema({
 
 		},
 		zipcode: {
-			type: Number,
+			type: String,
 			required: true,
+			trim: true,
 		},
 		city: {
 			type: String,
@@ -49,6 +50,26 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true
+	},
+	id_card: {
+		image_kit_id: {
+			type: String,
+			trim: true
+		},
+		image_kit_url: {
+			type: String,
+			trim: true
+		}
+	},
+	driver_license: {
+		image_kit_id: {
+			type: String,
+			trim: true
+		},
+		image_kit_url: {
+			type: String,
+			trim: true
+		}
 	},
 	role: {
 		type: String,

@@ -1,54 +1,134 @@
 import mongoose from 'mongoose'
 
 const carSchema = new mongoose.Schema({
-    car_available: {
+    brand: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    model: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    acquisition_date: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    mileage: {
+        type: Number,
+        required: true,
+        trim: true,
+    },
+    available: {
         type: Boolean,
         required: true,
-    },
-    car_brand: {
-        type: String,
-        required: true,
         trim: true,
     },
-    car_model: {
-        type: String,
-        required: true,
-        trim: true,
+    platform: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'platformModel',
+        }
     },
-    car_category: {
-        type: String,
-        required: true,
-        trim: true,
+    offer: {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            trim: true,
+            ref: 'offerModel',
+        }
     },
-    car_color: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-    car_state: {
-        type: Number,
-        required: true,
-    },
-
-    car_kilometer: {
-        type: Number,
-        required: true,
-    },
-    car_history: {
-        car_purchase: {
-            type: String,
+    rents: [{
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             trim: true,
         },
-        car_crashed: {
+        start_date: {
+            type: Date,
+            required: true,
+            trim: true
+        },
+        end_date: {
+            type: Date,
+            required: true,
+            trim: true
+        },
+        has_started: {
             type: Boolean,
             required: true,
+            trim: true
         },
-        crash_history: {
+        start_date_confirmed: {
             type: String,
-            trim: true,
-        }
-    }
+            trim: true
+        },
+        end_date_confirmed: {
+            type: String,
+            trim: true
+        },
+        platform: {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'platformModel',
+            }
+        },
+        user: {
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+                ref: 'userModel',
+            }
+        },
+        incidents: [{
+            incident_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                trim: true,
+            },
+            signal_date: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            details: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            files: {
+                photo: {
+                    image_kit_id: {
+                        type: String,
+                        required: true,
+                        trim: true
+                    },
+                    image_kit_url: {
+                        type: String,
+                        required: true,
+                        trim: true
+                    }
+                },
+                report: {
+                    image_kit_id: {
+                        type: String,
+                        trim: true
+                    },
+                    image_kit_url: {
+                        type: String,
+                        trim: true
+                    }
+                }
+            }
+        }]
+    }]
 }, { versionKey: false, timestamps: true })
 
 const carModel = mongoose.model('carModel', carSchema, 'elecity_cars')
