@@ -7,6 +7,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 import router from './routes/routes.js'
 import './config/passport.js'
+import { Restore_Available_Cars_CRON } from './cron.js'
+Restore_Available_Cars_CRON
 
 const swaggerFile = JSON.parse(await readFile(new URL('./swagger-output.json', import.meta.url)))
 const PORT = process.env.PORT || 5000

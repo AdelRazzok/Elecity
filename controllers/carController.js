@@ -42,7 +42,7 @@ export const addCar = async (req, res) => {
 export const updateCar = async (req, res) => {
 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
 		const car = await CarModel.findByIdAndUpdate(req.params.id, req.body)
-		if (!car) res.status(404).send('Unknow car model')
+		if (!car) res.status(404).send('Unknow car')
 		await car.save()
 		res.status(200).send(car)
 	} else {

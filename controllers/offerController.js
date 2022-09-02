@@ -74,7 +74,7 @@ export const updateOfferImage = async (req, res) => {
 				file: req.file.buffer,
 				fileName: req.file.originalname,
 			},
-				function (err, response) {
+				(err, response) => {
 					if (err) res.status(500).json(err)
 					offer.offer_image[image_identifier].image_kit_id = response.fileId
 					offer.offer_image[image_identifier].image_kit_url = response.url
