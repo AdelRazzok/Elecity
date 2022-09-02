@@ -8,7 +8,7 @@ const RestoreAvailableCars = async (fireDate) => {
   let checked_date
   if (job_moment.minutes() == 16) {
     checked_date = job_moment.minutes(0).seconds(0).milliseconds(0)
-  } else if (job_moment.minutes() == 37) {
+  } else if (job_moment.minutes() == 46) {
     checked_date = job_moment.minutes(30).seconds(0).milliseconds(0)
   } else {
     console.log('error')
@@ -44,6 +44,6 @@ const RestoreAvailableCars = async (fireDate) => {
   }
 }
 
-export const Restore_Available_Cars_CRON = schedule.scheduleJob('16,37 * * * *', function (fireDate) {
+export const Restore_Available_Cars_CRON = schedule.scheduleJob('16,46 * * * *', function (fireDate) {
   RestoreAvailableCars(fireDate)
 })
