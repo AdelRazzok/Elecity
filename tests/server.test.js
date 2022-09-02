@@ -33,9 +33,8 @@ describe('Testing the server status', () => {
 		expect(response.statusCode).toBe(200)
 	})
 })
-/*
-========== USER ROUTES ==========
-*/
+
+/* ========== USER ROUTES ========== */
 describe('Testing users routes', () => {
 	const testUser = {
 		first_name: 'Super',
@@ -101,6 +100,5 @@ describe('Testing users routes', () => {
 
 	afterAll(() => userModel.deleteMany({ role: 'test' }))
 })
-/*
-========== CARS ROUTES ==========
-*/
+
+/* ========== CARS ROUTES ========== */
