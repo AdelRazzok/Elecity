@@ -113,40 +113,9 @@ export const getUser = async (req, res) => {
 
 export const addUser = async (req, res) => {
 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
-		const { first_name, last_name, birth_date, phone, mail, password, role } = req.body
-		const { street, zipcode, city } = req.body.address
-		const user = await User.create({
-			first_name,
-			last_name,
-			address: {
-				street,
-				zipcode,
-				city,
-			},
-			birth_date,
-			phone,
-			mail,
-			password: await generatePassword(password),
-			role
-		})
-		
-		if(user) {
-			await user.save()
-			res.status(201).send({
-				first_name,
-				last_name,
-				address: {
-					street,
-					zipcode,
-					city,
-				},
-				birth_date,
-				phone,
-				mail,
-			})
-		} else {
-			res.status(400).send('Données invalides')
-		}
+		const user = await User.create(req.body)
+		await user.save()
+		res.status(201).send(user)
 	} else {
 		res.status(401).send('Unauthorized')
 	}

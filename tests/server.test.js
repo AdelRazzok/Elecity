@@ -1,12 +1,10 @@
+import app from '../server'
 import request from 'supertest'
 import dotenv from 'dotenv'
 dotenv.config()
 import userModel from '../models/userModel'
-import app from '../server'
 
 const API_KEY = process.env.API_KEY
-
-/* ==================== UNIT TESTS ==================== */
 
 /* ========== SERVER TEST ========== */
 describe('Testing the server status', () => {
@@ -30,14 +28,13 @@ describe('Testing users routes', () => {
 		phone: '0123456789',
 		mail: 'supertest@mail.com',
 		password: 'password',
-		role: 'Test'
+		role: 'test'
 	}
 	// Create an user and return his ID to test the routes
 	const getUserId = async () => {
-		const response = await request(app)
-			.post('/api/v1/users')
-			.send(testUser)
-			.set({ token: API_KEY })
+		const response = await request(app).post('/api/v1/users')
+		.send(testUser)
+		.set({ token: API_KEY })
 		return response.body._id
 	}
 
