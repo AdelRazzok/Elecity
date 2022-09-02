@@ -71,6 +71,15 @@ const carSchema = new mongoose.Schema({
             type: String,
             trim: true
         },
+        price: {
+            type: Number,
+            trim: true
+        },
+        qrcode: {
+            type: String,
+            required: true,
+            trim: true
+        },
         platform: {
             _id: {
                 type: mongoose.Schema.Types.ObjectId,
@@ -116,16 +125,16 @@ const carSchema = new mongoose.Schema({
                         trim: true
                     }
                 },
-                report: {
-                    image_kit_id: {
-                        type: String,
-                        trim: true
-                    },
-                    image_kit_url: {
-                        type: String,
-                        trim: true
-                    }
-                }
+                // report: {
+                //     image_kit_id: {
+                //         type: String,
+                //         trim: true
+                //     },
+                //     image_kit_url: {
+                //         type: String,
+                //         trim: true
+                //     }
+                // }
             }
         }]
     }]
