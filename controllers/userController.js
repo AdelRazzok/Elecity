@@ -5,6 +5,12 @@ import { imageKitSDK } from '../helpers.js'
 
 const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
+const generatePassword = async (password) => {
+	const salt = await bcrypt.genSalt(10)
+	const hashedPassword = await bcrypt.hash(password, salt)
+	return hashedPassword
+}
+
 /* ========== User auth / profile functions ========== */
 export const registerUser = (async (req, res) => {
 	const { first_name, last_name, birth_date, phone, mail, password, role } = req.body
@@ -16,8 +22,6 @@ export const registerUser = (async (req, res) => {
 		throw new Error('Duplicate mail')
 	}
 
-	const salt = await bcrypt.genSalt(10)
-	const hashedPassword = await bcrypt.hash(password, salt)
 	const user = await User.create({
 		first_name,
 		last_name,
@@ -29,7 +33,7 @@ export const registerUser = (async (req, res) => {
 		birth_date,
 		phone,
 		mail,
-		password: hashedPassword,
+		password: await generatePassword(password),
 		role
 	})
 
@@ -61,7 +65,7 @@ export const loginUser = (async (req, res) => {
 
 	if (user && (await bcrypt.compare(password, user.password))) {
 		res.status(200).json({
-			token: generateToken(user._id)
+			accessToken: generateToken(user._id)
 		})
 	} else {
 		res.status(401).json({

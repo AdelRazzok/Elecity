@@ -39,4 +39,6 @@ jobs:
           IMAGEKIT_PUBLIC_KEY: ${{ secrets.IMAGEKIT_PUBLIC_KEY }}
           IMAGEKIT_PRIVATE_KEY: ${{ secrets.IMAGEKIT_PRIVATE_KEY }}
           IMAGEKIT_URL_ENDPOINT: ${{ secrets.IMAGEKIT_URL_ENDPOINT }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
         run: npm test

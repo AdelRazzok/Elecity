@@ -1,7 +1,5 @@
 import ImageKit from 'imagekit'
-import CarModel from './models/carModel.js'
-import Mongoose from 'mongoose'
-import moment from 'moment'
+import QRCode from 'qrcode'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -14,3 +12,11 @@ export const imageKitSDK = new ImageKit({
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
   urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 })
+
+export const generateQR = async (text) => {
+  try {
+    return await QRCode.toDataURL(text)
+  } catch (err) {
+    console.error(err)
+  }
+}

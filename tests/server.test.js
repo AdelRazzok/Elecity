@@ -1,30 +1,10 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-import cors from 'cors'
+import app from '../server'
 import request from 'supertest'
-import router from '../routes/routes.js'
-import userModel from '../models/userModel.js'
-
+import dotenv from 'dotenv'
 dotenv.config()
+import userModel from '../models/userModel'
 
 const API_KEY = process.env.API_KEY
-const PORT = process.env.PORT || 5001
-const app = express()
-
-app.use(cors({
-    origin: '*',
-    options: 'GET,POST,PATCH,DELETE',
-    allowedHeaders: 'Content-type,token'
-}))
-app.use(express.json())
-
-mongoose.connect(process.env.MONGODB)
-
-app.use('/api/v1', router)
-app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
-
-/* ==================== UNIT TESTS ==================== */
 
 /* ========== SERVER TEST ========== */
 describe('Testing the server status', () => {
@@ -33,9 +13,8 @@ describe('Testing the server status', () => {
 		expect(response.statusCode).toBe(200)
 	})
 })
-/*
-========== USER ROUTES ==========
-*/
+
+/* ========== USER ROUTES ========== */
 describe('Testing users routes', () => {
 	const testUser = {
 		first_name: 'Super',
@@ -49,7 +28,7 @@ describe('Testing users routes', () => {
 		phone: '0123456789',
 		mail: 'supertest@mail.com',
 		password: 'password',
-		role: 'Test'
+		role: 'test'
 	}
 	// Create an user and return his ID to test the routes
 	const getUserId = async () => {
@@ -101,6 +80,5 @@ describe('Testing users routes', () => {
 
 	afterAll(() => userModel.deleteMany({ role: 'test' }))
 })
-/*
-========== CARS ROUTES ==========
-*/
+
+/* ========== CARS ROUTES ========== */
