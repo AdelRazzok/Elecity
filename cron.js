@@ -13,6 +13,7 @@ const RestoreAvailableCars = async (fireDate) => {
   } else {
     console.log('error')
   }
+  // FAIRE UN POPULATE POUR RECUP UNE SEULE RENT
   const cars = await CarModel.find({
     rents: {
       $elemMatch: {
