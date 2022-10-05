@@ -147,7 +147,6 @@ export const addRent = async (req, res) => {
 
 export const getRent = async (req, res) => {
   if (req.headers.token && req.headers.token === process.env.API_KEY) {
-    // FAIRE UN POPULATE POUR RECUP UNE SEULE RENT
     const rent = await CarModel.find(
       {
         'rent._id': Mongoose.Types.ObjectId(req.params.id)
