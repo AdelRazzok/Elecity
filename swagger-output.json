@@ -53,7 +53,28 @@
         }
       }
     },
-    "/api/v1/users": {
+    "/api/v1/users/register": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/login": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/me": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/users/": {
       "get": {
         "tags": [
           "Users"
@@ -194,7 +215,148 @@
         ]
       }
     },
-    "/api/v1/cars": {
+    "/api/v1/rents/": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Update the offer with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Create a new rent"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/rent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rents/{id}": {
+      "get": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Rents"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete the rent with the param ID"
+          },
+          "401": {
+            "description": "Error : unauthorized access"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/cars/": {
       "get": {
         "tags": [
           "Cars"
@@ -335,7 +497,7 @@
         ]
       }
     },
-    "/api/v1/offers": {
+    "/api/v1/offers/": {
       "get": {
         "tags": [
           "Offers"
@@ -476,121 +638,31 @@
         ]
       }
     },
-    "/api/v1/rents": {
+    "/api/v1/files/{filename}": {
       "get": {
-        "tags": [
-          "Rents"
-        ],
         "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Update the offer with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
+        "parameters": [
           {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Create a new rent"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/rent"
-              }
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        }
+        ],
+        "responses": {}
       }
     },
-    "/api/v1/rents/{id}": {
-      "get": {
-        "tags": [
-          "Rents"
-        ],
+    "/api/v1/files/": {
+      "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Return the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Update the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/files/{id}": {
       "delete": {
-        "tags": [
-          "Rents"
-        ],
         "description": "",
         "parameters": [
           {
@@ -602,19 +674,7 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Delete the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        "responses": {}
       }
     }
   },
