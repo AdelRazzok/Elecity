@@ -147,6 +147,7 @@ export const addRent = async (req, res) => {
 
 export const getRent = async (req, res) => {
   if (req.headers.token && req.headers.token === process.env.API_KEY) {
+    
     const rent = await CarModel.find(
       {
         'rent._id': Mongoose.Types.ObjectId(req.params.id)
