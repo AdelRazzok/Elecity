@@ -6,7 +6,7 @@ const doc = {
 		description: 'Open documentation for Elecity API'
 	},
 	host: 'elecity-api.herokuapp.com',
-	schemes: ['http', 'https'],
+	schemes: ['https'],
 	security: {
 		bearerAuth: []
 	},
