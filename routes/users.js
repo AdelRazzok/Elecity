@@ -1,6 +1,6 @@
 import express from 'express'
 import passport from 'passport'
-import { registerUser, loginUser, getMe, getUsers, getUser, addUser, updateUser, deleteUser } from '../controllers/userController.js'
+import { register, login, getUserInfos, getUsers, getUser, addUser, updateUser, deleteUser } from '../controllers/userController.js'
 import { catchErrors } from '../helpers.js'
 
 const router = express.Router()
@@ -8,17 +8,17 @@ const router = express.Router()
 // @route   POST api/v1/users/register
 // @desc    Create a new user
 // @access  Public
-router.post('/register', catchErrors(registerUser))
+router.post('/register', catchErrors(register))
 
 // @route   POST api/v1/users/login
 // @desc    Check if the mail / password combination is correct
 // @access  Public
-router.post('/login', catchErrors(loginUser))
+router.post('/login', catchErrors(login))
 
 // @route   GET api/v1/users/me
 // @desc    Return the logged user's data
 // @access  Private
-router.get('/me', passport.authenticate('jwt', { session: false }), catchErrors(getMe))
+router.get('/infos', passport.authenticate('jwt', { session: false }), catchErrors(getUserInfos))
 
 
 /* ========== Admin Routes ========== */

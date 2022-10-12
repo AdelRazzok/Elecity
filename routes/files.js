@@ -5,12 +5,9 @@ import { catchErrors } from '../helpers.js'
 import multer from 'multer'
 
 const upload = multer()
-
 const router = express.Router()
 
-/* ========== Admin Routes ========== */
-
-/* ==== User ==== */
+/* ===== User ===== */
 
 // @route   PATCH api/v1/files/user/:id
 // @desc    Upload a file to a user by updating the user's id_card or driver_license
@@ -22,7 +19,7 @@ router.patch('/user/:id', upload.single('user_document'), catchErrors(updateUser
 // @access  Private
 router.delete('/user/:id', catchErrors(deleteUserDocument))
 
-/* ==== Offer ==== */
+/* ===== Offer ===== */
 
 // @route   PATCH api/v1/files/offer/:id
 // @desc    Upload a file to an offer by updating one of the offer's images

@@ -12,7 +12,7 @@ const generatePassword = async (password) => {
 }
 
 /* ========== User auth / profile functions ========== */
-export const registerUser = (async (req, res) => {
+export const register = (async (req, res) => {
 	const { first_name, last_name, birth_date, phone, mail, password, role } = req.body
 	const { street, zipcode, city } = req.body.address
 	const userExists = await User.findOne({ mail })
@@ -59,7 +59,7 @@ export const registerUser = (async (req, res) => {
 	}
 })
 
-export const loginUser = (async (req, res) => {
+export const login = (async (req, res) => {
 	const { mail, password } = req.body
 	const user = await User.findOne({ mail })
 
@@ -74,20 +74,20 @@ export const loginUser = (async (req, res) => {
 	}
 })
 
-export const getMe = (async (req, res) => {
+export const getUserInfos = (async (req, res) => {
 	const { first_name, last_name, address, birth_date, phone, mail } = await User.findById(req.user._id)
 
 	res.status(200).json({
-		first_name: first_name,
-		last_name: last_name,
+		first_name,
+		last_name,
 		address: {
 			street: address.street,
 			zipcode: address.zipcode,
 			city: address.city
 		},
-		birth_date: birth_date,
-		phone: phone,
-		mail: mail
+		birth_date,
+		phone,
+		mail
 	})
 })
 
@@ -111,6 +111,7 @@ export const getUser = async (req, res) => {
 	}
 }
 
+/* /!\ Hacher le mot de passe /!\ */
 export const addUser = async (req, res) => {
 	if (req.headers.token && req.headers.token === process.env.API_KEY) {
 		const user = await User.create(req.body)

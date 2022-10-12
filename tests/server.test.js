@@ -42,7 +42,7 @@ describe('Testing users routes', () => {
 		const response = await request(app).get('/api/v1/users')
 		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
-		expect(response.type).toEqual('application/json')
+		expect(response.type).toBe('application/json')
 	})
 
 	it('should create an user', async () => {
@@ -50,14 +50,14 @@ describe('Testing users routes', () => {
 		.send(testUser)
 		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(201)
-		expect(response.type).toEqual('application/json')
+		expect(response.type).toBe('application/json')
 	})
 
 	it('should return an user', async () => {
 		const response = await request(app).get(`/api/v1/users/${await getUserId()}`)
 		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
-		expect(response.type).toEqual('application/json')
+		expect(response.type).toBe('application/json')
 	})
 
 	it('should update an user', async () => {
@@ -68,14 +68,14 @@ describe('Testing users routes', () => {
 		})
 		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
-		expect(response.type).toEqual('application/json')
+		expect(response.type).toBe('application/json')
 	})
 
 	it('should delete an user', async () => {
 		const response = await request(app).delete(`/api/v1/users/${await getUserId()}`)
 		.set({ token: API_KEY })
 		expect(response.statusCode).toBe(200)
-		expect(response.text).toEqual('User deleted')
+		expect(response.text).toBe('User deleted')
 	})
 
 	afterAll(() => userModel.deleteMany({ role: 'test' }))
