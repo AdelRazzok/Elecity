@@ -182,6 +182,29 @@ export const getUserRents = async (req, res) => {
   }
 }
 
+export const updateRent = async (req, res) => {
+  if (req.headers.token && req.headers.token === process.env.API_KEY) {
+    const car = await CarModel.findOneAndUpdate({
+      rents: {
+        $elemMatch: {
+          _id: Mongoose.Types.ObjectId(req.params.id)
+        }
+      }
+    })
+    if (!car) res.status(404).send('No car found with this rent')
+    if (req.body.update == 'start') {
+      car.rents[0].has_started = true
+      car.rents[0].start_date_confirmed = moment()
+    } else {
+      car.rents[0].end_date_confirmed = moment()
+    }
+    await car.save()
+    res.status(200).send('Rent updated')
+  } else {
+    res.status(401).send('Unauthorized')
+  }
+}
+
 export const deleteRent = async (req, res) => {
   if (req.headers.token && req.headers.token === process.env.API_KEY) {
     const car = await CarModel.findOne({
