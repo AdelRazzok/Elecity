@@ -195,8 +195,10 @@ export const updateRent = async (req, res) => {
     if (req.body.update == 'start') {
       car.rents[0].has_started = true
       car.rents[0].start_date_confirmed = moment()
-    } else {
+    } else if(req.body.update == 'end') {
       car.rents[0].end_date_confirmed = moment()
+    } else {
+      res.status(500).send('Rent update not specified')
     }
     await car.save()
     res.status(200).send('Rent updated')

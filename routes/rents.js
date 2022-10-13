@@ -1,5 +1,5 @@
 import express from 'express'
-import { addRent, deleteRent, getAvailableCars, getRent, getUserRents } from '../controllers/rentController.js'
+import { addRent, deleteRent, getAvailableCars, getRent, getUserRents, updateRent } from '../controllers/rentController.js'
 import { catchErrors } from '../helpers.js'
 
 const router = express.Router()
@@ -11,6 +11,8 @@ router.post('/', catchErrors(addRent))
 router.get('/user/:id', catchErrors(getUserRents))
 
 router.get('/:id', catchErrors(getRent))
+
+router.patch('/:id', catchErrors(updateRent))
 
 router.delete('/:id', catchErrors(deleteRent))
 
