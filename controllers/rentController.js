@@ -192,16 +192,19 @@ export const updateRent = async (req, res) => {
       }
     })
     if (!car) res.status(404).send('No car found with this rent')
+    let rent = car.rents[0]
     if (req.body.update == 'start') {
-      car.rents[0].has_started = true
-      car.rents[0].start_date_confirmed = moment()
+
+      rent.has_started = true
+      rent.start_date_confirmed = moment().format()
     } else if(req.body.update == 'end') {
-      car.rents[0].end_date_confirmed = moment()
+      rent.end_date_confirmed = moment().format()
     } else {
       res.status(500).send('Rent update not specified')
     }
+    car.rents[0] = rent
     await car.save()
-    res.status(200).send('Rent updated')
+    res.status(200).send(rent)
   } else {
     res.status(401).send('Unauthorized')
   }
