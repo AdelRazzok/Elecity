@@ -75,7 +75,7 @@ export const login = (async (req, res) => {
 })
 
 export const getUserInfos = (async (req, res) => {
-	const { first_name, last_name, address, birth_date, phone, mail } = await User.findById(req.user._id)
+	const { first_name, last_name, address, birth_date, phone, mail, role } = await User.findById(req.user._id)
 
 	res.status(200).json({
 		first_name,
@@ -87,7 +87,8 @@ export const getUserInfos = (async (req, res) => {
 		},
 		birth_date,
 		phone,
-		mail
+		mail,
+		role,
 	})
 })
 
