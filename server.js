@@ -27,11 +27,11 @@ mongoose.connect(process.env.MONGODB)
 app.use('/api/v1', router)
 app.use('/api/v1/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
-import ngrok from 'ngrok'
-(async function() {
-  const url = await ngrok.connect()
-  console.log(url)
-})()
+// import ngrok from 'ngrok'
+// (async function() {
+//   const url = await ngrok.connect()
+//   console.log(url)
+// })()
 
 app.listen(PORT, () => console.log(`Server listening on port : ${PORT}`))
 

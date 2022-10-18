@@ -5,16 +5,16 @@ const doc = {
 		title: 'Elecity API',
 		description: 'Open documentation for Elecity API'
 	},
-	host: 'elecity-api.herokuapp.com',
-	schemes: ['https'],
+	host: 'localhost:80',
+	schemes: ['http'],
 	security: {
-		bearerAuth: []
+		ApiTokenAuth: []
 	},
 	securityDefinitions: {
-		bearerAuth: {
-			type: 'http',
-			scheme: 'bearer',
-			bearerFormat: 'JWT'
+		ApiTokenAuth: {
+			type: 'apiKey',
+			in: 'header',
+			name: 'token'
 		}
 	},
 	tags: [

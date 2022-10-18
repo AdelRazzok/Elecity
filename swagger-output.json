@@ -7,10 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://elecity-api.herokuapp.com/"
-    },
-    {
-      "url": "https://elecity-api.herokuapp.com/"
+      "url": "http://localhost:80/"
     }
   ],
   "tags": [
@@ -67,7 +64,7 @@
         "responses": {}
       }
     },
-    "/api/v1/users/me": {
+    "/api/v1/users/infos": {
       "get": {
         "description": "",
         "parameters": [],
@@ -91,7 +88,7 @@
         },
         "security": [
           {
-            "bearerAuth": []
+            "ApiTokenAuth": []
           }
         ]
       },
@@ -111,7 +108,7 @@
         },
         "security": [
           {
-            "bearerAuth": []
+            "ApiTokenAuth": []
           }
         ],
         "requestBody": {
@@ -152,7 +149,7 @@
         },
         "security": [
           {
-            "bearerAuth": []
+            "ApiTokenAuth": []
           }
         ]
       },
@@ -181,7 +178,7 @@
         },
         "security": [
           {
-            "bearerAuth": []
+            "ApiTokenAuth": []
           }
         ]
       },
@@ -210,148 +207,7 @@
         },
         "security": [
           {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
-    "/api/v1/rents/": {
-      "get": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Update the offer with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Create a new rent"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/rent"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/rents/{id}": {
-      "get": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Return the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Update the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Rents"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Delete the rent with the param ID"
-          },
-          "401": {
-            "description": "Error : unauthorized access"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
+            "ApiTokenAuth": []
           }
         ]
       }
@@ -638,12 +494,26 @@
         ]
       }
     },
-    "/api/v1/files/{filename}": {
-      "get": {
+    "/api/v1/files/user/{id}": {
+      "patch": {
         "description": "",
         "parameters": [
           {
-            "name": "filename",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -654,14 +524,200 @@
         "responses": {}
       }
     },
-    "/api/v1/files/": {
+    "/api/v1/files/offer/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/platforms/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
       "post": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/api/v1/files/{id}": {
+    "/api/v1/platforms/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/platforms/car/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents/available/{city}/{offerId}/{start_date}/{end_date}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents/": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents/user/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/api/v1/rents/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      },
       "delete": {
         "description": "",
         "parameters": [
@@ -824,14 +880,14 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
+      "ApiTokenAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "token"
       }
     }
   },
   "security": {
-    "bearerAuth": []
+    "ApiTokenAuth": []
   }
 }

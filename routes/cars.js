@@ -8,7 +8,7 @@ router.get('/', catchErrors(getCars)
 /*
 	#swagger.tags = ['Cars']
 	#swagger.security = [{
-		"bearerAuth": []
+		"ApiTokenAuth": []
 	}]
 	#swagger.responses[200] = { description: 'Return all cars' }
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -18,7 +18,7 @@ router.get('/:id', catchErrors(getCar)
 /*
 	#swagger.tags = ['Cars']
 	#swagger.security = [{
-		"bearerAuth": []
+		"ApiTokenAuth": []
 	}]
 	#swagger.responses[200] = { description: 'Return the car with the param ID' }
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -28,7 +28,7 @@ router.post('/', catchErrors(addCar)
 /*
 	#swagger.tags = ['Cars']
 	#swagger.security = [{
-		"bearerAuth": []
+		"ApiTokenAuth": []
 	}]
 	#swagger.requestBody = {
 		required: true,
@@ -48,7 +48,7 @@ router.patch('/:id', catchErrors(updateCar)
 /*
 	#swagger.tags = ['Cars']
 	#swagger.security = [{
-		"bearerAuth": []
+		"ApiTokenAuth": []
 	}]
 	#swagger.responses[200] = { description: 'Update the car with the param ID' }
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -58,7 +58,7 @@ router.delete('/:id', catchErrors(deleteCar)
 /*
 	#swagger.tags = ['Cars']
 	#swagger.security = [{
-		"bearerAuth": []
+		"ApiTokenAuth": []
 	}]
 	#swagger.responses[200] = { description: 'Delete the car with the param ID' }
 	#swagger.responses[401] = { description: 'Error : unauthorized access' }

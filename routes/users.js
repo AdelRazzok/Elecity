@@ -26,7 +26,7 @@ router.get('/', catchErrors(getUsers)
 	/*
 		#swagger.tags = ['Users']
 		#swagger.security = [{
-			"bearerAuth": []
+			"ApiTokenAuth": []
 		}]
 		#swagger.responses[200] = { description: 'Return all users' }
 		#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -36,7 +36,7 @@ router.get('/:id', catchErrors(getUser)
 	/*
 		#swagger.tags = ['Users']
 		#swagger.security = [{
-			"bearerAuth": []
+			"ApiTokenAuth": []
 		}]
 		#swagger.responses[200] = { description: 'Return the user with the param ID' }
 		#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -46,7 +46,7 @@ router.post('/', catchErrors(addUser)
 	/*
 		#swagger.tags = ['Users']
 		#swagger.security = [{
-			"bearerAuth": []
+			"ApiTokenAuth": []
 		}]
 		#swagger.requestBody = {
 			required: true,
@@ -57,7 +57,7 @@ router.post('/', catchErrors(addUser)
 					}  
 				}
 			}
-			}
+		}
 		#swagger.responses[200] = { description: 'Create a new user' }
 		#swagger.responses[401] = { description: 'Error : unauthorized access' }
 	*/
@@ -66,7 +66,7 @@ router.patch('/:id', catchErrors(updateUser)
 	/*
 		#swagger.tags = ['Users']
 		#swagger.security = [{
-			"bearerAuth": []
+			"ApiTokenAuth": []
 		}]
 		#swagger.responses[200] = { description: 'Update the user with the param ID' }
 		#swagger.responses[401] = { description: 'Error : unauthorized access' }
@@ -76,7 +76,7 @@ router.delete('/:id', catchErrors(deleteUser)
 	/*
 		#swagger.tags = ['Users']
 		#swagger.security = [{
-			"bearerAuth": []
+			"ApiTokenAuth": []
 		}]
 		#swagger.responses[200] = { description: 'Delete the user with the param ID' }
 		#swagger.responses[401] = { description: 'Error : unauthorized access' }
